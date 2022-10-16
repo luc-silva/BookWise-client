@@ -7,20 +7,86 @@
     list-style: none;
 }
 :root{
-    --createButton: rgb(15, 208, 95);
-    --deleteButton: rgb(208, 15, 15);
+    --lightConfirm: #a4db7f;
+    --darkerConfirm: #498621;
+
+    --lightDeny: #e3918d;
+    --darkerDeny: #db3b32;
 }
 
 header {
+    position: sticky;
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
     padding: 1.2rem 7rem;
-
     border-bottom: 1px solid rgb(207, 207, 207) ;
 }
-
+#logo {
+    color: royalblue;
+}
 ul{
     display: flex;
-    gap: 0.8rem;
+    gap: 1rem;
+    font-size: 18px;
+}
+li:hover{
+    color: royalblue;
+}
+
+#container{
+    padding-top: 2rem;
+    padding-right: 7rem;
+    padding-left: 7rem;
+}
+
+#main-panel{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 2px solid rgb(207, 207, 207);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#buttons{
+    display: flex;
+    gap: 1rem;
+}
+button{
+    padding: 0.4rem 0.7rem;
+    outline: rgb(203, 203, 203) solid 1px;
+    border-radius: 5px;
+}
+#delete-book-btn{
+    background-color: var(--darkerDeny);
+    color: white;
+    font-weight: bold;
+}
+#add-book-btn{
+    background-color: var(--darkerConfirm);
+    color: white;
+    font-weight: bold;
+}
+#btn-icon{
+    margin-right: 1rem;
+}
+#status-panel{
+    margin-bottom: 2rem;
+    font-size: 0.8rem;
+}
+
+#bookshelf{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.book{
+    flex: 0 0 auto;
+
+    height: 250px;
+    width: 180px;
+    background-color: black;
 }
