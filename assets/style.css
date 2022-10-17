@@ -48,6 +48,7 @@ li:hover{
     align-items: center;
 
     border-bottom: 2px solid rgb(207, 207, 207);
+    border-bottom: 2px solid royalblue ;
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
 }
@@ -79,15 +80,20 @@ button{
 }
 
 #bookshelf{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2.2rem;
+}
+.empty-bookshelf{
+    justify-content: center;
+    color: grey;
+    font-size: 24px;
 }
 .book{
     flex: 0 0 auto;
 
-    height: 250px;
-    width: 180px;
+    height: 280px;
+    /* width: 180px; */
     background-color: black;
 }
 
