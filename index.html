@@ -1,32 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Library</title>
-    <script src="script/script.js" defer></script>
-    <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Library</title>
+        <script src="script/script.js" defer></script>
+        <link rel="stylesheet" href="assets/style.css">
+    </head>
+    <body>
+    <div id="card-creator-popup"></div>
+    <div id="card-creator-container">
+        <h2>Add a book to the shelf!</h2>
+        <input type="text" id="book-title" placeholder="Title">
+        <input type="text" id="book-author" placeholder="Author">
+        <input min="1" type="number" id="book-pages" placeholder="Number of pages">
+        <span>Already read?</span>
+        <input type="checkbox" id="read-checkbox">
+    </div>
     <header>
         <div id="logo">
             <h1>Library</h1>
         </div>
         <nav>
             <ul>
-                <li>GitHub</li>
-                <li>Code</li>
+                <li>Link 1</li>
+                <li>Link 2</li>
             </ul>
         </nav>
     </header>
 
-    <div id="card-creator-popup">
 
+    <div id="container">
+
+        <div id="main-panel">
+            <div><h2>Bookshelf</h2></div>
+            <div id="buttons">
+                <button id="add-book-btn" ><span id="btn-icon">+</span>Add</button>
+                <button id="delete-book-btn" ><span id="btn-icon">-</span>Delete</button>
+            </div>
+        </div>
+        <div id="status-panel">Read:   Not Read:   Dropped:   </div>
+        <div id="bookshelf">
+
+        </div>
     </div>
+
     <div id="book-details-popup">
-
-    </div>
-    <div>
-
     </div>
 
     <footer>

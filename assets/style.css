@@ -57,18 +57,18 @@ li:hover{
 }
 button{
     padding: 0.4rem 0.7rem;
-    outline: rgb(203, 203, 203) solid 1px;
     border-radius: 5px;
-}
-#delete-book-btn{
-    background-color: var(--darkerDeny);
-    color: white;
+    background-color: white;
     font-weight: bold;
 }
 #add-book-btn{
-    background-color: var(--darkerConfirm);
     color: white;
-    font-weight: bold;
+    background-color: royalblue;
+    outline: royalblue solid 1px;
+}
+#delete-book-btn{
+    outline: royalblue solid 1px;
+    color: royalblue;
 }
 #btn-icon{
     margin-right: 1rem;
@@ -89,4 +89,47 @@ button{
     height: 250px;
     width: 180px;
     background-color: black;
+}
+
+#card-creator-popup{
+    display: none;
+
+    position: absolute;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.624);
+}
+#card-creator-container{
+
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+
+    display: none;
+    flex-direction: column;
+
+    width: 25vw;
+
+    border-radius: 5px;
+    padding: 20px 40px;
+    
+    outline: royalblue solid 1px;
+    background-color: white;
+}
+#card-creator-container > input[type="text"], input[type="number"]{
+    border-bottom: 1px solid royalblue;
+    margin-bottom: 1rem;
+
+    width: 100%;
+    height: 2rem;
+}
+#card-creator-container > h2{
+    margin-bottom: 1rem;
+}
+input[type="text"]:focus, input[type="number"]:focus{
+    outline: none;
 }
