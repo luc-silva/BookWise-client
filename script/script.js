@@ -16,6 +16,11 @@ addBookButton.addEventListener("click", () =>{
 let bookshelf = document.querySelector("#bookshelf")
 let books = document.querySelectorAll(".book")
 
+let statusPanel = document.querySelector("#status-panel")
+function getStatus(){
+    statusPanel.textContent = `Total: ${books.length} Read: Not Read: Dropped:`
+}
+
 function checker(){
     if(books.length == 0){
         bookshelf.style.display = "flex"
@@ -25,6 +30,7 @@ function checker(){
         bookshelf.style.display = "grid"
         bookshelf.classList.remove("empty-bookshelf")
     }
+    getStatus()
 }
 checker()
 
