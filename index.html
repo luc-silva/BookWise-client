@@ -9,12 +9,22 @@
     <body>
     <div id="card-creator-popup"></div>
     <div id="card-creator-container">
-        <h2>Add a book to the shelf!</h2>
+        <h2>Add a book to the shelf</h2>
         <input type="text" id="book-title" placeholder="Title">
         <input type="text" id="book-author" placeholder="Author">
         <input min="1" type="number" id="book-pages" placeholder="Number of pages">
-        <span>Already read?</span>
-        <input type="checkbox" id="read-checkbox">
+        <div>
+            <span id="status-checkbox">Status:</span>
+            <select name="" id="status-checkbox">
+                <option value="read">Read</option>
+                <option value="not read">Not Read</option>
+                <option value="dropped">Dropped</option>
+            </select>
+        </div>
+        <div>
+            <button class="confirm">Add</button>
+            <button class="cancel">Cancel</button>
+        </div>
     </div>
     <header>
         <div id="logo">
@@ -34,13 +44,16 @@
         <div id="main-panel">
             <div><h2>Bookshelf</h2></div>
             <div id="buttons">
-                <button id="add-book-btn" ><span id="btn-icon">+</span>Add</button>
-                <button id="delete-book-btn" ><span id="btn-icon">-</span>Delete</button>
+                <button id="add-book-btn" class="confirm"><span id="btn-icon">+</span>Add</button>
+                <button id="delete-book-btn" class="cancel"><span id="btn-icon">-</span>Delete</button>
             </div>
         </div>
-        <div id="status-panel">Read:   Not Read:   Dropped:   </div>
+        <div id="status-panel">Total:Read:Not Read:Dropped:</div>
         <div id="bookshelf">
-
+            <div class="book"></div>
+            <div class="book"></div>
+            <div class="book"></div>
+            <div class="book"></div>
         </div>
     </div>
 
