@@ -1,41 +1,45 @@
 let addBookContainer = document.querySelector("#card-creator-container")
 
 let closeButtons = document.querySelectorAll(".cancel")
-let addBookPopup = document.querySelector("#card-creator-popup")
-function closePopup(){
-    addBookPopup.style.display = "none"
-    addBookContainer.style.display = "none"
-}
-addBookPopup.addEventListener("click", closePopup)
+let addBookPopupBG = document.querySelector("#card-creator-popup")
+addBookPopupBG.addEventListener("click", closePopup)
 closeButtons.forEach((button) => {
     button.addEventListener("click", closePopup)
 })
 
 
-let addBookButton = document.querySelector("#add-book-btn")
-addBookButton.addEventListener("click", () =>{
-    addBookPopup.style.display = "block"
+let addBookPopupBGButton = document.querySelector("#add-book-popup-btn")
+addBookPopupBGButton.addEventListener("click", () =>{
+    addBookPopupBG.style.display = "block"
     addBookContainer.style.display = "flex"
     console.log("oi")
 })
 
-let bookshelf = document.querySelector("#bookshelf")
 let books = document.querySelectorAll(".book")
+
+let addBookCover = document.createElement("div")
+addBookCover.id = "add-book-cover"
+addBookCover.textContent = "+"
 
 let statusPanel = document.querySelector("#status-panel")
 function getStatus(){
     statusPanel.textContent = `Total: ${books.length} Read: Not Read: Dropped:`
 }
 
-// let addSymbol = document.createElement("div")
-// addSymbol.classList.add("add-symbol")
+function closePopup(){
+    addBookPopupBG.style.display = "none"
+    addBookContainer.style.display = "none"
+}
 
-let addBookCover = document.createElement("div")
-// addBookCover.appendChild(addSymbol)
-addBookCover.id = "add-book-cover"
-addBookCover.textContent = "+"
+function clearInput(){
+    let inputs = document.querySelectorAll("input")
+    inputs.forEach(input => {
+        input.value = ""
+    })
+}
 
-function checker(){
+let bookshelf = document.querySelector("#bookshelf")
+function checkBookshelf(){
     if(books.length == 0){
         bookshelf.textContent = ""
         bookshelf.style.display = "flex"
@@ -48,28 +52,63 @@ function checker(){
     }
     getStatus()
 }
-checker()
+checkBookshelf()
 
 
 
 
+let addBookButton = document.querySelector("#add-book-button")
+addBookButton.addEventListener("click", () => {
+    let bookTitle = document.querySelector("#book-title").value
+    let bookAuthor = document.querySelector("#book-author").value
+    let bookDescription = document.querySelector("#book-description").value
+    let bookLink = document.querySelector("#book-link").value
+    let bookPages = document.querySelector("#book-pages").value
+    let bookStatus = document.querySelector("#status-options").value
+    
+    let newBook = new Book(bookTitle, bookAuthor, bookDescription, bookLink, bookPages, bookStatus)
+    bookshelfArray.push(newBook)
+    closePopup()
+    clearInput()
+    insertBook(newBook)
+    checkBookshelf()
+})
+
+let bookshelfArray = []
+function insertBook(book){
+    let bookCover = document.createElement("div")
+    bookCover.classList.add("book")
+
+    let bookTitleDisplay = document.createElement("div")
+    bookTitleDisplay.classList.add("book-title-display") 
+    bookTitleDisplay.textContent = `${book.title} - ${book.author}`
+
+    let bookGenreDisplay = document.createElement("div")
+    bookGenreDisplay.classList.add("book-genre-display")
+    bookGenreDisplay.innerHTML = `<em>${book.genre}</em>`
+
+    let bookDetailDisplay = document.createElement("div")
+    bookDetailDisplay.classList.add("book-detail-display")
+    bookDetailDisplay.innerHTML = `<span>${book.status}</span> 
+    <span>Added: ${book.dateAdded.getMonth()}/${book.dateAddedgetUTCDate()}/${book.dateAdded.getUTCFullYear()}</span>`
+
+    bookCover.append(bookTitleDisplay, bookGenreDisplay, bookDetailDisplay)
+    bookshelf.appendChild(bookCover)
+    checkBookshelf()
+}
 
 
-
-
-
-function Book(title, author, pages, read, dateAdded, dateUpdated=dateAdded){
+function Book(title, author, genre, description, link, pages, status){
     this.title = title;
     this.author = author;
+    this.genre = genre;
+    this.description = description;
+    this.link = link;
     this.pages = pages;
-    this.read = read;
-    this.dateAdded = dateAdded;
-    this.dateUpdated = dateUpdated;
-}
+    this.status = status;
+    this.id = title.trim().toUpperCase() + author.toUpperCase() + pages;
 
-let hobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet")
-Book.prototype.oi = () => {
-    return "oi"
+    this.dateAdded = new Date();
+    this.dateUpdated = this.dateAdded;
+    // console.log(hoje.getUTCDate(), hoje.getUTCMonth() + 1, hoje.getUTCDate())
 }
-
-console.log(hobbit.oi())
