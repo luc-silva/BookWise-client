@@ -55,7 +55,7 @@ li:hover{
     display: flex;
     gap: 1rem;
 }
-button{
+button {
     padding: 0.4rem 0.7rem;
     border-radius: 5px;
     background-color: white;
@@ -89,11 +89,40 @@ button{
     font-size: 24px;
 }
 .book{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
     flex: 0 0 auto;
+    box-sizing: border-box;
 
     height: 280px;
-    /* width: 180px; */
     background-color: black;
+}
+.book > div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #a4db7f;
+}
+.book-title-display {
+    color: white;
+    font-weight: bold;
+}
+.book-genre-display{
+    color: white;
+}
+.book-genre-display, .book-detail-display{
+    font-size: 0.85rem;
+}
+.book-detail-display{
+    flex-shrink: 1;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+.book-genre-display, .book-detail-display, .book-title-display {
+    margin: 0 1rem;
 }
 #add-book-cover{
     display: flex;
@@ -105,7 +134,7 @@ button{
     height: 280px;
     border-radius: 10px;
 
-    border: 3px dashed rgb(167, 164, 164);
+    outline: rgb(167, 164, 164) dashed 3px;
     color: rgb(167, 164, 164);
     background-color: white;
 }
@@ -121,25 +150,25 @@ button{
     background-color: rgba(0, 0, 0, 0.719);
 }
 #card-creator-container{
-
+    display: none;
     position: absolute;
     z-index: 2;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
 
-    display: none;
-    flex-direction: column;
-
     width: 25vw;
-
     border-radius: 5px;
     padding: 20px 40px;
     
     outline: royalblue solid 3px;
     background-color: white;
     box-shadow: 1px 1px 1px black;
+
+    flex-direction: column;
+    flex-grow: 1;
 }
+
 #card-creator-container > input[type="text"], input[type="number"]{
     border-bottom: 1px solid royalblue;
     margin-bottom: 1rem;
