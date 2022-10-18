@@ -12,15 +12,16 @@
         <h2>Add a book to the shelf</h2>
         <input type="text" id="book-title" placeholder="*Title">
         <input type="text" id="book-author" placeholder="*Author">
+        <input type="text" id="book-genre" placeholder="*Genre">
         <input type="text" id="book-description" placeholder="Description " maxlength="250">
         <input type="text" id="book-link" placeholder="Webstore link ">
         <input min="1" type="number" id="book-pages" placeholder="*Number of pages">
         <div>
             *Status:
-            <select name="" id="status-checkbox">
-                <option value="read">Read</option>
-                <option value="not read">Not Read</option>
-                <option value="dropped">Dropped</option>
+            <select id="status-options">
+                <option value="Read">Read</option>
+                <option value="Not read">Not Read</option>
+                <option value="Dropped">Dropped</option>
             </select>
         </div>
         <div>
@@ -52,7 +53,7 @@
         </div>
         <div id="status-panel">Total:Read:Not Read:Dropped:</div>
         <div id="bookshelf">
-            
+
         </div>
     </div>
 
