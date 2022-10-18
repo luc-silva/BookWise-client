@@ -1,4 +1,5 @@
 let addBookContainer = document.querySelector("#card-creator-container")
+let bookshelfArray = []
 
 let closeButtons = document.querySelectorAll(".cancel")
 let addBookPopupBG = document.querySelector("#card-creator-popup")
@@ -15,16 +16,12 @@ addBookPopupBGButton.addEventListener("click", () =>{
     console.log("oi")
 })
 
-let books = document.querySelectorAll(".book")
 
 let addBookCover = document.createElement("div")
 addBookCover.id = "add-book-cover"
 addBookCover.textContent = "+"
 
-let statusPanel = document.querySelector("#status-panel")
-function getStatus(){
-    statusPanel.textContent = `Total: ${books.length} Read: Not Read: Dropped:`
-}
+
 
 function closePopup(){
     addBookPopupBG.style.display = "none"
@@ -39,21 +36,25 @@ function clearInput(){
 }
 
 let bookshelf = document.querySelector("#bookshelf")
+let statusPanel = document.querySelector("#status-panel")
 function checkBookshelf(){
-    if(books.length == 0){
-        bookshelf.textContent = ""
+    if(bookshelfArray.length == 0){
         bookshelf.style.display = "flex"
         bookshelf.classList.add("empty-bookshelf")
         bookshelf.textContent = "Seems like you haven't added anything yet."
     } else {
+        bookshelf.textContent = ""
         bookshelf.style.display = "grid"
         bookshelf.classList.remove("empty-bookshelf")
+        insertBook()
         bookshelf.appendChild(addBookCover)
     }
-    getStatus()
+    setStatus(bookshelfArray)
 }
-checkBookshelf()
 
+function setStatus(booksNode){
+    statusPanel.textContent = `Total: ${booksNode.length} Read: Not Read: Dropped:`
+}
 
 
 
@@ -67,36 +68,37 @@ addBookButton.addEventListener("click", () => {
     let bookStatus = document.querySelector("#status-options").value
     
     let newBook = new Book(bookTitle, bookAuthor, bookDescription, bookLink, bookPages, bookStatus)
+
     bookshelfArray.push(newBook)
     closePopup()
     clearInput()
-    insertBook(newBook)
     checkBookshelf()
 })
 
-let bookshelfArray = []
-function insertBook(book){
-    let bookCover = document.createElement("div")
-    bookCover.classList.add("book")
+function insertBook(){
+    bookshelfArray.forEach(book => {
+        let bookCover = document.createElement("div")
+        bookCover.classList.add("book")
 
-    let bookTitleDisplay = document.createElement("div")
-    bookTitleDisplay.classList.add("book-title-display") 
-    bookTitleDisplay.textContent = `${book.title} - ${book.author}`
+        let bookTitleDisplay = document.createElement("div")
+        bookTitleDisplay.classList.add("book-title-display") 
+        bookTitleDisplay.textContent = `${book.title} - ${book.author}`
 
-    let bookGenreDisplay = document.createElement("div")
-    bookGenreDisplay.classList.add("book-genre-display")
-    bookGenreDisplay.innerHTML = `<em>${book.genre}</em>`
+        let bookGenreDisplay = document.createElement("div")
+        bookGenreDisplay.classList.add("book-genre-display")
+        bookGenreDisplay.innerHTML = `<em>${book.genre}</em>`
 
-    let bookDetailDisplay = document.createElement("div")
-    bookDetailDisplay.classList.add("book-detail-display")
-    bookDetailDisplay.innerHTML = `<span>${book.status}</span> 
-    <span>Added: ${book.dateAdded.getMonth()}/${book.dateAddedgetUTCDate()}/${book.dateAdded.getUTCFullYear()}</span>`
+        let bookDetailDisplay = document.createElement("div")
+        bookDetailDisplay.classList.add("book-detail-display")
+        bookDetailDisplay.innerHTML = `<span>${book.status}</span> 
+        <span>Added: ${book.dateAdded.getMonth()}/${book.dateAdded.getUTCDate()}/${book.dateAdded.getUTCFullYear()}</span>`
 
-    bookCover.append(bookTitleDisplay, bookGenreDisplay, bookDetailDisplay)
-    bookshelf.appendChild(bookCover)
-    checkBookshelf()
+        bookCover.append(bookTitleDisplay, bookGenreDisplay, bookDetailDisplay)
+        bookshelf.appendChild(bookCover)
+    })
 }
 
+checkBookshelf()
 
 function Book(title, author, genre, description, link, pages, status){
     this.title = title;
