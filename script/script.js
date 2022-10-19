@@ -62,12 +62,13 @@ let addBookButton = document.querySelector("#add-book-button")
 addBookButton.addEventListener("click", () => {
     let bookTitle = document.querySelector("#book-title").value
     let bookAuthor = document.querySelector("#book-author").value
+    let bookPages = document.querySelector("#book-pages").value
+    let bookGenre = document.querySelector("#book-genre").value
     let bookDescription = document.querySelector("#book-description").value
     let bookLink = document.querySelector("#book-link").value
-    let bookPages = document.querySelector("#book-pages").value
     let bookStatus = document.querySelector("#status-options").value
     
-    let newBook = new Book(bookTitle, bookAuthor, bookDescription, bookLink, bookPages, bookStatus)
+    let newBook = new Book(bookTitle, bookAuthor, bookPages, bookGenre, bookDescription, bookLink, bookStatus)
 
     bookshelfArray.push(newBook)
     closePopup()
@@ -79,6 +80,9 @@ function insertBook(){
     bookshelfArray.forEach(book => {
         let bookCover = document.createElement("div")
         bookCover.classList.add("book")
+
+        let aboutContainer = document.createElement("div")
+        aboutContainer.classList.add("about-container")
 
         let bookTitleDisplay = document.createElement("div")
         bookTitleDisplay.classList.add("book-title-display") 
@@ -93,14 +97,15 @@ function insertBook(){
         bookDetailDisplay.innerHTML = `<span>${book.status}</span> 
         <span>Added: ${book.dateAdded.getMonth()}/${book.dateAdded.getUTCDate()}/${book.dateAdded.getUTCFullYear()}</span>`
 
-        bookCover.append(bookTitleDisplay, bookGenreDisplay, bookDetailDisplay)
+        aboutContainer.append(bookTitleDisplay, bookGenreDisplay, bookDetailDisplay)
+        bookCover.append(aboutContainer)
         bookshelf.appendChild(bookCover)
     })
 }
 
 checkBookshelf()
 
-function Book(title, author, genre, description, link, pages, status){
+function Book(title, author, pages, genre, description, link,  status){
     this.title = title;
     this.author = author;
     this.genre = genre;
