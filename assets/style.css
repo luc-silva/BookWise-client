@@ -57,7 +57,7 @@ li:hover{
 }
 button {
     padding: 0.4rem 0.7rem;
-    border-radius: 5px;
+    border-radius: 2px;
     background-color: white;
     font-weight: bold;
 }
@@ -99,7 +99,7 @@ button {
     height: 280px;
     background-color: black;
 }
-.book > div{
+.about-container{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -142,7 +142,7 @@ button {
 #card-creator-popup{
     display: none;
 
-    position: absolute;
+    position: fixed;
     z-index: 1;
 
     width: 100%;
@@ -151,7 +151,7 @@ button {
 }
 #card-creator-container{
     display: none;
-    position: absolute;
+    position: fixed;
     z-index: 2;
     left: 50%;
     top: 50%;
