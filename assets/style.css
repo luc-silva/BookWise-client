@@ -185,3 +185,15 @@ button {
 input[type="text"]:focus, input[type="number"]:focus{
     outline: none;
 }
+.warning{
+    display: none;
+    padding: 0.5rem;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+
+    /* background-color: #f7d8d6;
+    outline: #db3b32 solid 1px; */
+
+    color: #db3b32;
+}
