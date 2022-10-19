@@ -53,11 +53,27 @@ function checkBookshelf() {
         insertBook()
         bookshelf.appendChild(addBookCover)
     }
-    setStatus(bookshelfArray)
+    setStatus()
 }
 
-function setStatus(booksNode) {
-    statusPanel.textContent = `Total: ${booksNode.length} Read: Not Read: Dropped:`
+function setStatus() {
+    let readTotal = 0
+    let notReadTotal = 0
+    let droppedTotal = 0
+    for(let book of bookshelfArray){
+        if(book.status === "Read"){
+            readTotal++
+            document.querySelector("#read-total").textContent = `Read: ${readTotal}`
+        }
+        if(book.status === "Not Read"){
+            notReadTotal++
+            document.querySelector("#not-read-total").textContent = `Not Read: ${notReadTotal}`
+        }
+        if(book.status === "Dropped"){
+            droppedTotal++
+            document.querySelector("#dropped-total").textContent = `Dropped: ${droppedTotal}`
+        }
+    }
 }
 
 
