@@ -10,10 +10,9 @@ closeButtons.forEach((button) => {
 
 
 let addBookPopupBGButton = document.querySelector("#add-book-popup-btn")
-addBookPopupBGButton.addEventListener("click", () =>{
+addBookPopupBGButton.addEventListener("click", () => {
     addBookPopupBG.style.display = "block"
     addBookContainer.style.display = "flex"
-    console.log("oi")
 })
 
 
@@ -22,13 +21,18 @@ addBookCover.id = "add-book-cover"
 addBookCover.textContent = "+"
 
 
-
-function closePopup(){
-    addBookPopupBG.style.display = "none"
-    addBookContainer.style.display = "none"
+let warning = document.querySelector("#warning-popup")
+function showWarning() {
+    warning.style.display = "flex"
 }
 
-function clearInput(){
+function closePopup() {
+    addBookPopupBG.style.display = "none"
+    addBookContainer.style.display = "none"
+    warning.style.display = "none"
+}
+
+function clearInput() {
     let inputs = document.querySelectorAll("input")
     inputs.forEach(input => {
         input.value = ""
@@ -37,8 +41,8 @@ function clearInput(){
 
 let bookshelf = document.querySelector("#bookshelf")
 let statusPanel = document.querySelector("#status-panel")
-function checkBookshelf(){
-    if(bookshelfArray.length == 0){
+function checkBookshelf() {
+    if (bookshelfArray.length == 0) {
         bookshelf.style.display = "flex"
         bookshelf.classList.add("empty-bookshelf")
         bookshelf.textContent = "Seems like you haven't added anything yet."
@@ -52,7 +56,7 @@ function checkBookshelf(){
     setStatus(bookshelfArray)
 }
 
-function setStatus(booksNode){
+function setStatus(booksNode) {
     statusPanel.textContent = `Total: ${booksNode.length} Read: Not Read: Dropped:`
 }
 
@@ -67,16 +71,21 @@ addBookButton.addEventListener("click", () => {
     let bookDescription = document.querySelector("#book-description").value
     let bookLink = document.querySelector("#book-link").value
     let bookStatus = document.querySelector("#status-options").value
-    
+
     let newBook = new Book(bookTitle, bookAuthor, bookPages, bookGenre, bookDescription, bookLink, bookStatus)
 
-    bookshelfArray.push(newBook)
-    closePopup()
-    clearInput()
-    checkBookshelf()
+    if (bookTitle, bookAuthor, bookPages, bookGenre) {
+        bookshelfArray.push(newBook)
+        closePopup()
+        clearInput()
+        checkBookshelf()
+    } else {
+        showWarning()
+    }
 })
 
-function insertBook(){
+
+function insertBook() {
     bookshelfArray.forEach(book => {
         let bookCover = document.createElement("div")
         bookCover.classList.add("book")
@@ -85,7 +94,7 @@ function insertBook(){
         aboutContainer.classList.add("about-container")
 
         let bookTitleDisplay = document.createElement("div")
-        bookTitleDisplay.classList.add("book-title-display") 
+        bookTitleDisplay.classList.add("book-title-display")
         bookTitleDisplay.textContent = `${book.title} - ${book.author}`
 
         let bookGenreDisplay = document.createElement("div")
@@ -105,7 +114,7 @@ function insertBook(){
 
 checkBookshelf()
 
-function Book(title, author, pages, genre, description, link,  status){
+function Book(title, author, pages, genre, description, link, status) {
     this.title = title;
     this.author = author;
     this.genre = genre;
