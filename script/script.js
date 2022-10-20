@@ -161,6 +161,12 @@ function showBookDetail() {
         };
     });
 
+    let dateCreatedDisplay = document.querySelector(".date-created");
+    dateCreatedDisplay.textContent = `Date created: ${selectedBook.dateAdded.getMonth()}/${selectedBook.dateAdded.getUTCDate()}/${selectedBook.dateAdded.getUTCFullYear()}`;
+
+    let lastTimeUpdated = document.querySelector(".last-time-updated");
+    lastTimeUpdated.textContent = `Last time updated: ${selectedBook.dateUpdated.getMonth()}/${selectedBook.dateUpdated.getUTCDate()}/${selectedBook.dateUpdated.getUTCFullYear()}`
+
     let buyLink = document.querySelector(".buy-btn")
     if(selectedBook.link){
         buyLink.style.display = "block"   
