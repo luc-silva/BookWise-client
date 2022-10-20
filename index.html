@@ -13,8 +13,8 @@
         <input type="text" id="book-title" placeholder="*Title">
         <input type="text" id="book-author" placeholder="*Author">
         <input min="1" type="number" id="book-pages" placeholder="*Number of pages">
-        <input type="text" id="book-genre" placeholder="*Genre">
-        <input type="text" id="book-description" placeholder="Description " maxlength="250">
+        <input type="text" id="book-genre" placeholder="*Genre" maxlength="100">
+        <input type="text" id="book-description" placeholder="Description " maxlength="750">
         <input type="text" id="book-link" placeholder="Webstore link ">
         <div>
             *Status:
@@ -32,37 +32,37 @@
             Something went wrong. Please, check the requirements.
         </div>
     </div>
+
     <div id="book-details">
         <div class="book-picture-section">
             <div class="book-about-image">
                 
             </div>
-            <button class="buy-btn">Buy on Amazon</button>
+            <button class="buy-btn" target="__blank" >Buy on Amazon</button>
+            <button class="edit-btn">Edit</button>
         </div>
 
         <div class="book-detail-section">
             <div class="book-basic-information">
                 <div class="book-title-popup-display">
-                    <h2 >Deus Ex: Black Light</h2>
-                    <em>James Swallow</em>
+                    <h2 class="book-title"></h2>
+                    <em class="book-author"></em>
                 </div>
                 <div>
-                    <span class="book-status-display">Read</span>
-                    <span>| 298 Pages</span>
+                    <span class="book-status-display"></span>
+                    <span class="book-pages"></span>
                 </div>
             </div>
 
             <div class="tags-display">
                 Tags:
                 <div class="tags">
-                    Dystopia, Sci-fi, Noir
                 </div>
             </div>
 
             <div class="about-display">
                 About:
                 <div class="about">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed architecto nobis quia nisi ut. Dolorem earum eligendi similique pariatur ullam, tempora ducimus laboriosam! Vero fuga dolores consequatur nisi similique. Vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis alias ipsa perferendis nostrum nulla recusandae doloribus voluptatum cumque minus non ex cum repellat voluptatem, consectetur facilis suscipit quaerat ipsam aut?
                 </div>
             </div>
 

@@ -70,10 +70,11 @@ button {
     background-color: royalblue;
     outline: royalblue solid 1px;
 }
-.delete, .cancel{
+.delete, .cancel, .edit-btn{
     outline: royalblue solid 1px;
     color: royalblue;
 }
+
 #btn-icon{
     margin-right: 1rem;
 }
@@ -280,23 +281,25 @@ input[type="text"]:focus, input[type="number"]:focus{
     color: royalblue;
 }
 
-.tags-display{
-    color: royalblue
-}
-.tags{
+.tags, .about{
     color: grey;
 }
 
-.about-display{
+.about-display, .tags-display{
+    /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.181); */
     color: royalblue;
-}
-.about{
-    color: grey;
+    background-color: white;
+    padding: 0.8rem;
+    overflow: auto;
+    border-radius: 5px;
 }
 
-.buy-btn{
+.edit-btn, .buy-btn{
     width: 100%;
     margin: 1rem 0;
+}
+.buy-btn{
+    display: none;
 
     color: white;
     background-color: royalblue;
