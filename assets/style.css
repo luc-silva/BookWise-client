@@ -65,12 +65,12 @@ button {
     background-color: white;
     font-weight: bold;
 }
-.confirm{
+.close, .confirm{
     color: white;
     background-color: royalblue;
     outline: royalblue solid 1px;
 }
-.cancel{
+.delete, .cancel{
     outline: royalblue solid 1px;
     color: royalblue;
 }
@@ -223,3 +223,83 @@ input[type="text"]:focus, input[type="number"]:focus{
     font-size: 0.8rem;
     color: #db3b32;
 }
+
+#book-details{
+    display: none;
+    flex-direction: row;
+
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+
+
+    width: 80vw;
+    height: 80vh;
+    background-color: white;
+    outline: royalblue solid 3px;
+}
+
+.book-picture-section{
+    width: 20%;
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.book-detail-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: whitesmoke;
+    padding: 2rem;
+    width: 80%;
+}
+.book-about-image{
+    width: 100%;
+    height: 70%;
+
+    background-color: black;
+}
+.book-basic-information{
+    display: flex;
+    flex-direction: column;
+}
+.book-title-popup-display{
+    display: flex;
+    align-items: baseline;
+}
+.book-title-popup-display > em{
+    color: grey;
+    margin-left: 8px;
+}
+.book-status-display{
+    color: royalblue;
+}
+
+.tags-display{
+    color: royalblue
+}
+.tags{
+    color: grey;
+}
+
+.about-display{
+    color: royalblue;
+}
+.about{
+    color: grey;
+}
+
+.buy-btn{
+    width: 100%;
+    margin: 1rem 0;
+
+    color: white;
+    background-color: royalblue;
+    outline: rgb(51, 92, 214) solid 1px;
+}
+
