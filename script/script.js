@@ -126,7 +126,15 @@ function insertBook() {
 
         let bookGenreDisplay = document.createElement("div");
         bookGenreDisplay.classList.add("book-genre-display");
-        bookGenreDisplay.innerHTML = `<em>${book.genre}</em>`;
+        let tagQnty = book.genre.split(", ")
+        if(tagQnty.length > 2){
+            bookGenreDisplay.innerHTML = `<em>${tagQnty[0]}, ${tagQnty[1]}...</em>`;
+        } else if(tagQnty.length == 2){
+            console.log
+            bookGenreDisplay.innerHTML = `<em>${tagQnty[0]}, ${tagQnty[1]}</em>`;
+        } else {
+            bookGenreDisplay.innerHTML = `<em>${book.genre}</em>`;
+        };
 
         let bookDetailDisplay = document.createElement("div");
         bookDetailDisplay.classList.add("book-detail-display");
@@ -140,6 +148,7 @@ function insertBook() {
 }
 
 let bookDetailPopup = document.querySelector("#book-details");
+let selectedBook = null;
 function showBookDetail() {
     addBookPopupBG.style.display = "block";
     bookDetailPopup.style.display = "flex";
@@ -148,11 +157,46 @@ function showBookDetail() {
     bookshelfArray.forEach(book => {
         console.log(book.title);
         if (book.title === identifier) {
-            selectedBook == book;
+            selectedBook = book;
         };
     });
 
-}
+    let buyLink = document.querySelector(".buy-btn")
+    if(selectedBook.link){
+        buyLink.style.display = "block"   
+        buyLink.addEventListener("click", () => {
+            window.location.href = `${selectedBook.link}`;
+        });
+    };
+
+    let bookTitle = document.querySelector(".book-title");
+    bookTitle.textContent = selectedBook.title;
+
+    let bookAuthor = document.querySelector(".book-author");
+    bookAuthor.textContent = `By ${selectedBook.author}`;
+
+    let bookStatus = document.querySelector(".book-status-display");
+    bookStatus.textContent = selectedBook.status;
+    if(selectedBook.status == "Dropped"){
+        bookStatus.style.color = "red";
+        if(selectedBook.status == "Not Read"){
+            bookStatus.style.color == "yellow";
+        };
+    };
+
+    let bookPages = document.querySelector(".book-pages");
+    bookPages.textContent = `| ${selectedBook.pages} Pages`;
+
+    let bookGenres = document.querySelector(".tags");
+    bookGenres.textContent = selectedBook.genre;
+
+    let bookDescription = document.querySelector(".about");
+    if(selectedBook.description){
+        bookDescription.textContent = selectedBook.description;
+    } else {
+        bookDescription.textContent = "Nothing to show.";
+    };
+};
 
 checkBookshelf();
 
