@@ -152,11 +152,6 @@ function showBookDetail() {
         };
     });
 
-
-    let bookPictureSection = document.createElement("div")
-    bookPictureSection.classList.add("book-picture-section")
-
-    bookDetailPopup.append()
 }
 
 checkBookshelf();
