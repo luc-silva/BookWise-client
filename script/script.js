@@ -26,9 +26,11 @@ function showWarning() {
     warning.style.display = "flex";
 };
 
+document.querySelector(".close").addEventListener("click", closePopup)
 function closePopup() {
     addBookPopupBG.style.display = "none";
     addBookContainer.style.display = "none";
+    bookDetailPopup.style.display = "none";
     warning.style.display = "none";
 };
 
@@ -53,6 +55,11 @@ function checkBookshelf() {
         insertBook();
         bookshelf.appendChild(addBookCover);
     };
+    let books = document.querySelectorAll(".book");
+    books.forEach((book) => {
+        book.addEventListener("click", showBookDetail);
+    });
+
     setStatus();
 };
 
@@ -60,24 +67,24 @@ function setStatus() {
     let readTotal = 0;
     let notReadTotal = 0;
     let droppedTotal = 0;
-    for(let book of bookshelfArray){
-        if(book.status === "Read"){
+    for (let book of bookshelfArray) {
+        if (book.status === "Read") {
             readTotal++;
             document.querySelector("#read-total").textContent = `Read: ${readTotal}`;
         };
-        if(book.status === "Not Read"){
+        if (book.status === "Not Read") {
             notReadTotal++;
             document.querySelector("#not-read-total").textContent = `Not Read: ${notReadTotal}`;
         };
-        if(book.status === "Dropped"){
+        if (book.status === "Dropped") {
             droppedTotal++;
             document.querySelector("#dropped-total").textContent = `Dropped: ${droppedTotal}`;
         };
     };
 
     let readPercentageDisplay = document.querySelector("#percentage-books-read");
-    if(bookshelfArray.length !== 0){
-        readPercentageDisplay.textContent = `${(readTotal / bookshelfArray.length) * 100}%`;
+    if (bookshelfArray.length !== 0) {
+        readPercentageDisplay.textContent = `${Math.trunc((readTotal / bookshelfArray.length) * 100)}%`;
     };
 }
 
@@ -132,6 +139,26 @@ function insertBook() {
     })
 }
 
+let bookDetailPopup = document.querySelector("#book-details");
+function showBookDetail() {
+    addBookPopupBG.style.display = "block";
+    bookDetailPopup.style.display = "flex";
+
+    let identifier = this.textContent.split(" ")[0];
+    bookshelfArray.forEach(book => {
+        console.log(book.title);
+        if (book.title === identifier) {
+            selectedBook == book;
+        };
+    });
+
+
+    let bookPictureSection = document.createElement("div")
+    bookPictureSection.classList.add("book-picture-section")
+
+    bookDetailPopup.append()
+}
+
 checkBookshelf();
 
 function Book(title, author, pages, genre, description, link, status) {
@@ -142,7 +169,7 @@ function Book(title, author, pages, genre, description, link, status) {
     this.link = link;
     this.pages = pages;
     this.status = status;
-    this.id = title.trim().toUpperCase() + author.toUpperCase() + pages;
+    this.id = title.trim().toUpperCase() + author.trim().toUpperCase() + pages;
 
     this.dateAdded = new Date();
     this.dateUpdated = this.dateAdded;
