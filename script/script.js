@@ -149,7 +149,7 @@ function insertBook() {
         let bookDetailDisplay = document.createElement("div");
         bookDetailDisplay.classList.add("book-detail-display");
         bookDetailDisplay.innerHTML = `<span>${book.status}</span>
-        <span>Added: ${book.dateAdded.getMonth()}/${book.dateAdded.getUTCDate()}/${book.dateAdded.getUTCFullYear()}</span>`;
+        <span>Added: ${book.dateAdded.getMonth() + 1}/${book.dateAdded.getUTCDate()}/${book.dateAdded.getUTCFullYear()}</span>`;
 
         aboutContainer.append(bookTitleDisplay, bookTagsDisplay, bookDetailDisplay);
         bookCover.append(aboutContainer);
@@ -182,10 +182,10 @@ function showBookDetail() {
     });
 
     let dateCreatedDisplay = document.querySelector(".date-created");
-    dateCreatedDisplay.textContent = `Date created: ${selectedBook.dateAdded.getMonth()}/${selectedBook.dateAdded.getUTCDate()}/${selectedBook.dateAdded.getUTCFullYear()}`;
+    dateCreatedDisplay.textContent = `Date created: ${selectedBook.dateAdded.getMonth() + 1}/${selectedBook.dateAdded.getUTCDate()}/${selectedBook.dateAdded.getUTCFullYear()}`;
 
     let lastTimeUpdated = document.querySelector(".last-time-updated");
-    lastTimeUpdated.textContent = `Last time updated: ${selectedBook.dateUpdated.getMonth()}/${selectedBook.dateUpdated.getUTCDate()}/${selectedBook.dateUpdated.getUTCFullYear()}`
+    lastTimeUpdated.textContent = `Last time updated: ${selectedBook.dateUpdated.getMonth() + 1}/${selectedBook.dateUpdated.getUTCDate()}/${selectedBook.dateUpdated.getUTCFullYear()}`
 
     let buyLink = document.querySelector(".buy-btn");
     if(selectedBook.link){
