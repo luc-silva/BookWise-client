@@ -137,10 +137,10 @@ button {
     color: white;
     font-weight: bold;
 }
-.book-genre-display{
+.book-tags-display{
     color: white;
 }
-.book-genre-display, .book-detail-display{
+.book-tags-display, .book-detail-display{
     font-size: 0.85rem;
 }
 .book-detail-display{
@@ -149,7 +149,7 @@ button {
     justify-content: space-between;
     color: white;
 }
-.book-genre-display, .book-detail-display, .book-title-display {
+.book-tags-display, .book-detail-display, .book-title-display {
     margin: 0 1rem;
 }
 #add-book-cover{
@@ -197,7 +197,7 @@ button {
     flex-grow: 1;
 }
 
-#card-creator-container > input[type="text"], input[type="number"]{
+#card-creator-container > input[type="text"], #card-creator-container > input[type="number"]{
     border-bottom: 1px solid royalblue;
     margin-bottom: 1rem;
 
@@ -223,6 +223,59 @@ input[type="text"]:focus, input[type="number"]:focus{
     
     font-size: 0.8rem;
     color: #db3b32;
+}
+
+#edit-popup{
+    display: none;
+    flex-direction: column;
+
+    position: fixed;
+    z-index: 3;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+
+    padding: 1rem;
+    width: 50vw;
+    height: 70vh;
+    outline: royalblue solid 3px;
+    background-color: white;
+}
+#edit-popup > h2{
+    color: royalblue;
+}
+#pages-tags{
+    display: flex;
+    justify-content: space-between;
+}
+#pages-tags > div{
+    width: 30%;
+}
+#edit-popup > div{
+    padding: 5px;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+
+    background-color: white;
+}
+#edit-popup > div > input, #pages-tags > div > input{
+    width: 100%;
+    border-bottom: 1px solid royalblue;
+}
+#description-input{
+    max-height: 140px;
+    word-wrap: break-word;
+    width: 100%;
+    outline: none;
+}
+#save-changes{
+    background-color: royalblue;
+    border: 2px solid rgb(24, 59, 166);
+    color: white;
+}
+#close-edit-panel{
+    color: royalblue;
+    border: 1px solid royalblue;
 }
 
 #book-details{

@@ -13,7 +13,7 @@
         <input type="text" id="book-title" placeholder="*Title">
         <input type="text" id="book-author" placeholder="*Author">
         <input min="1" type="number" id="book-pages" placeholder="*Number of pages">
-        <input type="text" id="book-genre" placeholder="*Genre" maxlength="100">
+        <input type="text" id="book-tags" placeholder="*Tags" maxlength="100">
         <input type="text" id="book-description" placeholder="Description " maxlength="750">
         <input type="text" id="book-link" placeholder="Webstore link ">
         <div>
@@ -33,12 +33,54 @@
         </div>
     </div>
 
+    <div id="edit-popup">
+        <h2>Edit</h2>
+        <div>
+            <p>Title:</p>
+            <input type="text" id="edit-title">
+        </div>
+        <div>
+            <p>Author:</p>
+            <input type="text" id="edit-author">
+        </div>
+        <div id="pages-tags">
+            <div>
+                <span>Pages:</span>
+                <input type="text" id="edit-pages">
+            </div>
+            <div>
+                <span>Tags:</span>
+                <input type="text" id="edit-tags">
+            </div>
+            <div>
+                <span>Status</span>
+                <select id="edit-status">
+                    <option value="Read">Read</option>
+                    <option value="Not Read">Not Read</option>
+                    <option value="Dropped">Dropped</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <p>Webstore Link:</p>
+            <input type="text" id="edit-webstorelink">
+        </div>
+        <div>
+            <p>Description:</p>
+            <textarea type="text" id="description-input" maxlength="750"></textarea>
+        </div>
+        <div id="edit-btn-panel">
+            <button id="save-changes">Save Changes</button>
+            <button id="close-edit-panel">Close</button>
+        </div>
+    </div>
+
     <div id="book-details">
         <div class="book-picture-section">
             <div class="book-about-image">
                 
             </div>
-            <button class="buy-btn" target="__blank" >Buy on Amazon</button>
+            <button class="buy-btn" >Buy on Amazon</button>
             <button class="edit-btn">Edit</button>
             <div class="date-display">
                 <span class="date-created">Date created:</span>
