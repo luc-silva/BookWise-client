@@ -167,7 +167,6 @@ function showBookDetail() {
 
     let identifier = this.textContent.split(" ")[0];
     bookshelfArray.forEach(book => {
-        console.log(book.title);
         if (book.title === identifier) {
             selectedBook = book;
         };
@@ -208,6 +207,9 @@ function showBookDetail() {
     let bookTags = document.querySelector(".tags");
     bookTags.textContent = selectedBook.tags;
 
+    let bookID = document.querySelector(".book-id");
+    bookID.textContent = `ID: ( ${selectedBook.id} )`
+
     let bookDescription = document.querySelector(".about");
     if(selectedBook.description){
         bookDescription.textContent = selectedBook.description;
@@ -224,12 +226,35 @@ function showBookDetail() {
     setBookInfo()
 };
 function setBookInfo(){
-    editTitleInput.value = selectedBook.title
-    editAuthorInput.value = selectedBook.author
-    editPagesInput.value = selectedBook.pages
-    editTagsInput.value = selectedBook.tags
+    editTitleInput.value = selectedBook.title;
+    editAuthorInput.value = selectedBook.author;
+    editPagesInput.value = selectedBook.pages;
+    editTagsInput.value = selectedBook.tags;
     editWebstorelink.value = selectedBook.link;
 }
+
+let closeEditPanelBtn = document.querySelector("#close-edit-panel")
+closeEditPanelBtn.addEventListener("click", () =>{
+    editPanel.style.display = "none"
+})
+
+let saveEditChanges = document.querySelector("#save-changes")
+saveEditChanges.addEventListener("click",() =>{
+    bookshelfArray.forEach(book => {
+        if(selectedBook.id === book.id){
+            book.title = editTitleInput.value
+            book.author = editAuthorInput.value
+            book.pages = editPagesInput.value
+            book.tags = editTagsInput.value
+            book.link = editWebstorelink.value
+            book.dateUpdated = new Date()
+        }
+        checkBookshelf()
+        closePopup()
+    })
+})
+
+
 checkBookshelf();
 
 function Book(title, author, pages, tags, description, link, status) {
@@ -240,7 +265,7 @@ function Book(title, author, pages, tags, description, link, status) {
     this.link = link;
     this.pages = pages;
     this.status = status;
-    this.id = title.trim().toUpperCase() + author.trim().toUpperCase() + pages;
+    this.id = title.trim().toUpperCase() + author.split(" ").join("").toUpperCase() + pages;
 
     this.dateAdded = new Date();
     this.dateUpdated = this.dateAdded;
