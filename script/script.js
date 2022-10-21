@@ -9,16 +9,18 @@ closeButtons.forEach((button) => {
 });
 
 
-let addBookPopupBGButton = document.querySelector("#add-book-popup-btn");
-addBookPopupBGButton.addEventListener("click", () => {
+function showAddBookPanel(){
     addBookPopupBG.style.display = "block";
     addBookContainer.style.display = "flex";
-});
+}
 
+let addBookPopupBGButton = document.querySelector("#add-book-popup-btn");
+addBookPopupBGButton.addEventListener("click", showAddBookPanel)
 
 let addBookCover = document.createElement("div");
 addBookCover.id = "add-book-cover";
 addBookCover.textContent = "+";
+addBookCover.addEventListener("click", showAddBookPanel)
 
 
 let warning = document.querySelector("#warning-popup");
@@ -104,7 +106,12 @@ addBookButton.addEventListener("click", () => {
 
     let newBook = new Book(bookTitle, bookAuthor, bookPages, bookTags, bookDescription, bookLink, bookStatus);
 
-    if (bookTitle, bookAuthor, bookPages, bookTags) {
+    let idArray = []
+    bookshelfArray.forEach(book => {
+        idArray.push(book.id)
+    })
+
+    if (bookTitle, bookAuthor, bookPages, bookTags && idArray.includes(newBook.id) == false) {
         bookshelfArray.push(newBook);
         closePopup();
         clearInput();
@@ -113,6 +120,7 @@ addBookButton.addEventListener("click", () => {
         showWarning();
     };
 });
+
 
 function insertBook() {
     bookshelfArray.forEach(book => {
