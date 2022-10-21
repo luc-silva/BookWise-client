@@ -26,7 +26,7 @@ function showWarning() {
     warning.style.display = "flex";
 };
 
-document.querySelector(".close").addEventListener("click", closePopup)
+document.querySelector(".close").addEventListener("click", closePopup);
 function closePopup() {
     addBookPopupBG.style.display = "none";
     addBookContainer.style.display = "none";
@@ -49,7 +49,7 @@ function checkBookshelf() {
     if (bookshelfArray.length == 0) {
         bookshelf.style.display = "flex";
         bookshelf.classList.add("empty-bookshelf");
-        bookshelf.textContent = "Seems like you haven't added anything yet."
+        bookshelf.textContent = "Seems like you haven't added anything yet.";
     } else {
         bookshelf.textContent = "";
         bookshelf.style.display = "grid";
@@ -72,21 +72,20 @@ function setStatus() {
     for (let book of bookshelfArray) {
         if (book.status === "Read") {
             readTotal++;
-        };
-        if (book.status === "Not Read") {
+        }else if (book.status === "Not Read") {
             notReadTotal++;
-        };
-        if (book.status === "Dropped") {
+        }else if (book.status === "Dropped") {
             droppedTotal++;
         };
-        
-        document.querySelector("#read-total").textContent = `Read: ${readTotal}`;
-        document.querySelector("#not-read-total").textContent = `Not Read: ${notReadTotal}`;
-        document.querySelector("#dropped-total").textContent = `Dropped: ${droppedTotal}`;
     };
+    document.querySelector("#read-total").textContent = `Read: ${readTotal}`;
+    document.querySelector("#not-read-total").textContent = `Not Read: ${notReadTotal}`;
+    document.querySelector("#dropped-total").textContent = `Dropped: ${droppedTotal}`;
 
     let readPercentageDisplay = document.querySelector("#percentage-books-read");
-    if (bookshelfArray.length !== 0) {
+    if (bookshelfArray.length === 0) {
+        readPercentageDisplay.textContent = `0%`;
+    }else{
         readPercentageDisplay.textContent = `${Math.trunc((readTotal / bookshelfArray.length) * 100)}%`;
     };
 }
@@ -129,7 +128,7 @@ function insertBook() {
 
         let bookTagsDisplay = document.createElement("div");
         bookTagsDisplay.classList.add("book-tags-display");
-        let tagQnty = book.tags.split(", ")
+        let tagQnty = book.tags.split(", ");
         if(tagQnty.length > 2){
             bookTagsDisplay.innerHTML = `<em>${tagQnty[0]}, ${tagQnty[1]}...</em>`;
         } else if(tagQnty.length == 2){
@@ -152,15 +151,15 @@ function insertBook() {
 
 let selectedBook = null;
 let bookDetailPopup = document.querySelector("#book-details");
-let editPanel = document.querySelector("#edit-popup")
+let editPanel = document.querySelector("#edit-popup");
 
-let editTitleInput = document.querySelector("#edit-title")
-let editAuthorInput = document.querySelector("#edit-author")
-let editPagesInput = document.querySelector("#edit-pages")
-let editTagsInput = document.querySelector("#edit-tags")
-let editBookStatus = document.querySelector("#edit-status")
-let editWebstorelink = document.querySelector("#edit-webstorelink")
-let editDescription = document.querySelector("#description-input")
+let editTitleInput = document.querySelector("#edit-title");
+let editAuthorInput = document.querySelector("#edit-author");
+let editPagesInput = document.querySelector("#edit-pages");
+let editTagsInput = document.querySelector("#edit-tags");
+let editBookStatus = document.querySelector("#edit-status");
+let editWebstorelink = document.querySelector("#edit-webstorelink");
+let editDescription = document.querySelector("#description-input");
 
 
 function showBookDetail() {
@@ -180,9 +179,9 @@ function showBookDetail() {
     let lastTimeUpdated = document.querySelector(".last-time-updated");
     lastTimeUpdated.textContent = `Last time updated: ${selectedBook.dateUpdated.getMonth()}/${selectedBook.dateUpdated.getUTCDate()}/${selectedBook.dateUpdated.getUTCFullYear()}`
 
-    let buyLink = document.querySelector(".buy-btn")
+    let buyLink = document.querySelector(".buy-btn");
     if(selectedBook.link){
-        buyLink.style.display = "block"   
+        buyLink.style.display = "block";
         buyLink.addEventListener("click", () => {
             window.location.href = `${selectedBook.link}`;
         });
@@ -198,9 +197,9 @@ function showBookDetail() {
     bookStatus.textContent = selectedBook.status;
     if(selectedBook.status == "Dropped"){
         bookStatus.style.color = "red";
-        if(selectedBook.status == "Not Read"){
-            bookStatus.style.color == "yellow";
-        };
+    };
+    if(selectedBook.status == "Not Read"){
+        bookStatus.style.color = "orange";
     };
 
     let bookPages = document.querySelector(".book-pages");
@@ -210,7 +209,7 @@ function showBookDetail() {
     bookTags.textContent = selectedBook.tags;
 
     let bookID = document.querySelector(".book-id");
-    bookID.textContent = `ID: ( ${selectedBook.id} )`
+    bookID.textContent = `ID: ( ${selectedBook.id} )`;
 
     let bookDescription = document.querySelector(".about");
     if(selectedBook.description){
@@ -219,13 +218,29 @@ function showBookDetail() {
         bookDescription.textContent = "Nothing to show.";
     };
 
-    let editBtn = document.querySelector(".edit-btn")
+    let editBtn = document.querySelector(".edit-btn");
     editBtn.addEventListener("click", () =>{
-        let editPanel = document.querySelector("#edit-popup")
-        editPanel.style.display = "flex"
+        let editPanel = document.querySelector("#edit-popup");
+        editPanel.style.display = "flex";
         addBookPopupBG.style.display = "block";
-    })
-    setBookInfo()
+        setBookInfo();
+    });
+
+    let deleteBtn = document.querySelector(".delete");
+    deleteBtn.addEventListener("click", () =>{
+        const removeBook = (book) => {
+            if(book.id !== selectedBook.id){
+                return book;
+            };
+        };
+        
+        bookshelfArray = bookshelfArray.filter(removeBook);
+        selectedBook = null;
+
+        checkBookshelf();
+        closePopup();
+    });
+
 };
 function setBookInfo(){
     editTitleInput.value = selectedBook.title;
@@ -233,30 +248,30 @@ function setBookInfo(){
     editPagesInput.value = selectedBook.pages;
     editTagsInput.value = selectedBook.tags;
     editWebstorelink.value = selectedBook.link;
-}
+};
 
-let closeEditPanelBtn = document.querySelector("#close-edit-panel")
+let closeEditPanelBtn = document.querySelector("#close-edit-panel");
 closeEditPanelBtn.addEventListener("click", () =>{
-    editPanel.style.display = "none"
-})
+    editPanel.style.display = "none";
+});
 
-let saveEditChanges = document.querySelector("#save-changes")
+let saveEditChanges = document.querySelector("#save-changes");
 saveEditChanges.addEventListener("click",() =>{
     bookshelfArray.forEach(book => {
         if(selectedBook.id === book.id){
-            book.title = editTitleInput.value
-            book.author = editAuthorInput.value
-            book.pages = editPagesInput.value
-            book.tags = editTagsInput.value
-            book.status = editBookStatus.value
-            book.link = editWebstorelink.value
-            book.description = editDescription.value
-            book.dateUpdated = new Date()
+            book.title = editTitleInput.value;
+            book.author = editAuthorInput.value;
+            book.pages = editPagesInput.value;
+            book.tags = editTagsInput.value;
+            book.status = editBookStatus.value;
+            book.link = editWebstorelink.value;
+            book.description = editDescription.value;
+            book.dateUpdated = new Date();
         }
-        checkBookshelf()
-        closePopup()
-    })
-})
+        checkBookshelf();
+        closePopup();
+    });
+});
 
 
 checkBookshelf();
