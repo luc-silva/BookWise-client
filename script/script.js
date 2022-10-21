@@ -32,6 +32,8 @@ function closePopup() {
     addBookContainer.style.display = "none";
     bookDetailPopup.style.display = "none";
     warning.style.display = "none";
+    document.querySelector("#edit-popup").style.display = "none";
+    
 };
 
 function clearInput() {
@@ -95,14 +97,14 @@ addBookButton.addEventListener("click", () => {
     let bookTitle = document.querySelector("#book-title").value;
     let bookAuthor = document.querySelector("#book-author").value;
     let bookPages = document.querySelector("#book-pages").value;
-    let bookGenre = document.querySelector("#book-genre").value;
+    let bookTags = document.querySelector("#book-tags").value;
     let bookDescription = document.querySelector("#book-description").value;
     let bookLink = document.querySelector("#book-link").value;
     let bookStatus = document.querySelector("#status-options").value;
 
-    let newBook = new Book(bookTitle, bookAuthor, bookPages, bookGenre, bookDescription, bookLink, bookStatus);
+    let newBook = new Book(bookTitle, bookAuthor, bookPages, bookTags, bookDescription, bookLink, bookStatus);
 
-    if (bookTitle, bookAuthor, bookPages, bookGenre) {
+    if (bookTitle, bookAuthor, bookPages, bookTags) {
         bookshelfArray.push(newBook);
         closePopup();
         clearInput();
@@ -124,16 +126,16 @@ function insertBook() {
         bookTitleDisplay.classList.add("book-title-display");
         bookTitleDisplay.textContent = `${book.title} - ${book.author}`;
 
-        let bookGenreDisplay = document.createElement("div");
-        bookGenreDisplay.classList.add("book-genre-display");
-        let tagQnty = book.genre.split(", ")
+        let bookTagsDisplay = document.createElement("div");
+        bookTagsDisplay.classList.add("book-tags-display");
+        let tagQnty = book.tags.split(", ")
         if(tagQnty.length > 2){
-            bookGenreDisplay.innerHTML = `<em>${tagQnty[0]}, ${tagQnty[1]}...</em>`;
+            bookTagsDisplay.innerHTML = `<em>${tagQnty[0]}, ${tagQnty[1]}...</em>`;
         } else if(tagQnty.length == 2){
             console.log
-            bookGenreDisplay.innerHTML = `<em>${tagQnty[0]}, ${tagQnty[1]}</em>`;
+            bookTagsDisplay.innerHTML = `<em>${tagQnty[0]}, ${tagQnty[1]}</em>`;
         } else {
-            bookGenreDisplay.innerHTML = `<em>${book.genre}</em>`;
+            bookTagsDisplay.innerHTML = `<em>${book.tags}</em>`;
         };
 
         let bookDetailDisplay = document.createElement("div");
@@ -141,14 +143,24 @@ function insertBook() {
         bookDetailDisplay.innerHTML = `<span>${book.status}</span>
         <span>Added: ${book.dateAdded.getMonth()}/${book.dateAdded.getUTCDate()}/${book.dateAdded.getUTCFullYear()}</span>`;
 
-        aboutContainer.append(bookTitleDisplay, bookGenreDisplay, bookDetailDisplay);
+        aboutContainer.append(bookTitleDisplay, bookTagsDisplay, bookDetailDisplay);
         bookCover.append(aboutContainer);
         bookshelf.appendChild(bookCover);
     })
 }
 
-let bookDetailPopup = document.querySelector("#book-details");
 let selectedBook = null;
+let bookDetailPopup = document.querySelector("#book-details");
+let editPanel = document.querySelector("#edit-popup")
+
+let editTitleInput = document.querySelector("#edit-title")
+let editAuthorInput = document.querySelector("#edit-author")
+let editPagesInput = document.querySelector("#edit-pages")
+let editTagsInput = document.querySelector("#edit-tags")
+let editWebstorelink = document.querySelector("#edit-webstorelink")
+let editDescription = document.querySelector("#description-input")
+
+
 function showBookDetail() {
     addBookPopupBG.style.display = "block";
     bookDetailPopup.style.display = "flex";
@@ -193,8 +205,8 @@ function showBookDetail() {
     let bookPages = document.querySelector(".book-pages");
     bookPages.textContent = `| ${selectedBook.pages} Pages`;
 
-    let bookGenres = document.querySelector(".tags");
-    bookGenres.textContent = selectedBook.genre;
+    let bookTags = document.querySelector(".tags");
+    bookTags.textContent = selectedBook.tags;
 
     let bookDescription = document.querySelector(".about");
     if(selectedBook.description){
@@ -202,14 +214,28 @@ function showBookDetail() {
     } else {
         bookDescription.textContent = "Nothing to show.";
     };
-};
 
+    let editBtn = document.querySelector(".edit-btn")
+    editBtn.addEventListener("click", () =>{
+        let editPanel = document.querySelector("#edit-popup")
+        editPanel.style.display = "flex"
+        addBookPopupBG.style.display = "block";
+    })
+    setBookInfo()
+};
+function setBookInfo(){
+    editTitleInput.value = selectedBook.title
+    editAuthorInput.value = selectedBook.author
+    editPagesInput.value = selectedBook.pages
+    editTagsInput.value = selectedBook.tags
+    editWebstorelink.value = selectedBook.link;
+}
 checkBookshelf();
 
-function Book(title, author, pages, genre, description, link, status) {
+function Book(title, author, pages, tags, description, link, status) {
     this.title = title;
     this.author = author;
-    this.genre = genre;
+    this.tags = tags;
     this.description = description;
     this.link = link;
     this.pages = pages;
