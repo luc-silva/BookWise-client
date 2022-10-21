@@ -72,16 +72,17 @@ function setStatus() {
     for (let book of bookshelfArray) {
         if (book.status === "Read") {
             readTotal++;
-            document.querySelector("#read-total").textContent = `Read: ${readTotal}`;
         };
         if (book.status === "Not Read") {
             notReadTotal++;
-            document.querySelector("#not-read-total").textContent = `Not Read: ${notReadTotal}`;
         };
         if (book.status === "Dropped") {
             droppedTotal++;
-            document.querySelector("#dropped-total").textContent = `Dropped: ${droppedTotal}`;
         };
+        
+        document.querySelector("#read-total").textContent = `Read: ${readTotal}`;
+        document.querySelector("#not-read-total").textContent = `Not Read: ${notReadTotal}`;
+        document.querySelector("#dropped-total").textContent = `Dropped: ${droppedTotal}`;
     };
 
     let readPercentageDisplay = document.querySelector("#percentage-books-read");
@@ -157,6 +158,7 @@ let editTitleInput = document.querySelector("#edit-title")
 let editAuthorInput = document.querySelector("#edit-author")
 let editPagesInput = document.querySelector("#edit-pages")
 let editTagsInput = document.querySelector("#edit-tags")
+let editBookStatus = document.querySelector("#edit-status")
 let editWebstorelink = document.querySelector("#edit-webstorelink")
 let editDescription = document.querySelector("#description-input")
 
@@ -246,7 +248,9 @@ saveEditChanges.addEventListener("click",() =>{
             book.author = editAuthorInput.value
             book.pages = editPagesInput.value
             book.tags = editTagsInput.value
+            book.status = editBookStatus.value
             book.link = editWebstorelink.value
+            book.description = editDescription.value
             book.dateUpdated = new Date()
         }
         checkBookshelf()
