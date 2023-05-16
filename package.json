@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/luc-silva/library/issues"
   },
-  "homepage": "https://github.com/luc-silva/library#readme"
+  "homepage": "https://github.com/luc-silva/library#readme",
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/react": "^18.2.6",
+    "@types/react-router-dom": "^5.3.3",
+    "typescript": "^5.0.4"
+  }
 }
