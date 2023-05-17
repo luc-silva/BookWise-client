@@ -1,0 +1,8 @@
+.header-navigation ul{
+    display: flex;
+    gap: 1rem;
+    font-size: 18px;
+}
+.header-navigation li:hover{
+    color: royalblue;
+}
