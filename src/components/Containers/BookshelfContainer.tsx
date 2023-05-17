@@ -1,5 +1,5 @@
 import { BookCard } from "../Cards/BookCard"
-import styles from "./Bookshelf.module.css";
+import styles from "./BookshelfContainer.module.css";
 
 export const BookshelfContainer = () => {
     let bookArr = [""]
