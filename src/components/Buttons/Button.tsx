@@ -5,12 +5,15 @@ export const Button = ({
     onClick,
     text,
     type,
+    fullWidth
 }: {
     text: string;
     type: "action" | "remove";
     onClick: MouseEventHandler;
+    fullWidth?:boolean
 }) => {
     let [actualStyle, setActualStyle] = useState(styles["button"]);
+    let [actualWidth, setActualWidth] = useState("")
     useEffect(() => {
         if (type === "action") {
             let style = [styles["button"], styles["button-action"]].join(" ");
@@ -20,8 +23,15 @@ export const Button = ({
             setActualStyle(style);
         }
     }, [type]);
+    useEffect(() => {
+        if(fullWidth){
+            setActualWidth("100%")
+        } else {
+            setActualWidth("")
+        }
+    }, [fullWidth])
     return (
-        <button className={actualStyle} onClick={onClick}>
+        <button style={{width: actualWidth}} className={actualStyle} onClick={onClick}>
             {text}
         </button>
     );

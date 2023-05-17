@@ -1,4 +1,4 @@
-import styles from "./Header.module.css"
+import styles from "./AppLogo.module.css"
 
 export const AppLogo = () => {
     return (
