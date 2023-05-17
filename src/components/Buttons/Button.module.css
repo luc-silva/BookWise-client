@@ -1,0 +1,18 @@
+.button {
+    padding: 0.4rem 0.7rem;
+    font-weight: bold;
+    border-radius: 5px;
+    outline: royalblue solid 1px;
+}
+.button-action {
+    color: white;
+    background-color: royalblue;
+}
+.button-edit {
+    color: royalblue;
+    background-color: white;
+}
+.button-delete {
+    color: royalblue;
+    background-color: white;
+}
