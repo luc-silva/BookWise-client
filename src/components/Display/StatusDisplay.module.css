@@ -1,0 +1,26 @@
+.status-panel{
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+
+    flex-grow: 1;
+
+    padding: 0.5rem 1rem;
+    margin: 0.6rem 0 1rem 0;
+    
+    font-size: 0.9rem;
+    color: royalblue;
+    border: 1px solid royalblue ;
+}
+.percentage-box{
+    display: flex;
+    align-items: center;
+}
+.percentage-books-read-text{
+    font-size: 0.7rem;
+    width: 80px;
+    text-align: left;
+}
+.percentage-books-read{
+    font-size: 2rem;
+}
