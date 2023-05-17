@@ -1,0 +1,11 @@
+.display__title {
+    font-size: 1.2rem;
+    color: white;
+}
+.display__tags {
+}
+.display__book-status {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
