@@ -21,13 +21,17 @@ export const NumberInput = ({
     labelText,
     placeholderText,
     placeholder,
-    isRequired = true
-}: CustomInputFields & { maxValue: number; minValue?: number }) => {
+    isRequired = true,
+}: CustomInputFields & {
+    maxValue: number;
+    minValue?: number;
+    actualState: number;
+}) => {
     return (
         <>
             {label && <label htmlFor={inputName}>{labelText}</label>}
             <input
-                type="text"
+                type="number"
                 name={inputName}
                 value={actualState}
                 onChange={onChange}

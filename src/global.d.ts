@@ -1,13 +1,29 @@
 interface CustomInputFields {
-    inputName:string
+    inputName: string;
     placeholder?: boolean;
     placeholderText?: string;
     label?: boolean;
     labelText?: string;
-    maxLenght: number;
-    minLenght: number;
     onChange: React.ChangeEventHandler;
-    actualState: string;
+    isRequired?: boolean;
+}
+interface BookDetails {
+    title: string;
+    author: string;
+    pages: number;
+    tags: string;
+    description: string;
+    volume: string;
+    franchise: string;
+    edition: string;
+    store_url: string;
+    release_date: Date;
+}
+
+interface UserSession {
+    username: string;
+    token: string;
+    isLogged: boolean;
 }
 
 declare module "*.module.css" {

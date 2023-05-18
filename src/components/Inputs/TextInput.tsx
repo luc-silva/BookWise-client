@@ -13,7 +13,6 @@
  */
 export const TextInput = ({
     inputName,
-    actualState,
     maxLenght,
     minLenght = 0,
     onChange,
@@ -21,8 +20,9 @@ export const TextInput = ({
     labelText,
     placeholderText,
     placeholder,
+    actualState,
     isRequired = true
-}: CustomInputFields & { maxLenght: number; minLenght?: number }) => {
+}: CustomInputFields & { maxLenght: number; minLenght?: number, actualState:string }) => {
     return (
         <>
             {label && <label htmlFor={inputName}>{labelText}</label>}

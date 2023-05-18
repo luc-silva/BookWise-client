@@ -9,7 +9,11 @@ export const TextareaInput = ({
     placeholderText,
     placeholder,
     isRequired,
-}: CustomInputFields & { maxLenght: number; minLenght?: number }) => {
+}: CustomInputFields & {
+    maxLenght: number;
+    minLenght?: number;
+    actualState: string;
+}) => {
     return (
         <>
             {label && <label htmlFor={inputName}>{labelText}</label>}
