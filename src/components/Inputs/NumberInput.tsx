@@ -2,8 +2,8 @@
  * TextInput component. It returns a fragment, so you can modify the label and input order freely.
  * @param inputName - The name of the input field.
  * @param actualState - The current value of the input field.
- * @param maxLength - The maximum length of the input field (optional).
- * @param minLength - The minimum length of the input field (optional).
+ * @param maxValue - The maximum value of the input field (optional).
+ * @param minValue - The minimum value of the input field (optional).
  * @param onChange - The callback function to handle input changes.
  * @param label - Indicates whether to display a label for the input field (optional).
  * @param labelText - The text to display as the label for the input field (optional).
@@ -11,18 +11,18 @@
  * @param placeholder - Indicates whether to display the placeholder text (optional).
  * @returns The TextInput component.
  */
-export const TextInput = ({
+export const NumberInput = ({
     inputName,
     actualState,
-    maxLenght,
-    minLenght = 0,
+    maxValue,
+    minValue = 0,
     onChange,
     label,
     labelText,
     placeholderText,
     placeholder,
     isRequired = true
-}: CustomInputFields & { maxLenght: number; minLenght?: number }) => {
+}: CustomInputFields & { maxValue: number; minValue?: number }) => {
     return (
         <>
             {label && <label htmlFor={inputName}>{labelText}</label>}
@@ -31,8 +31,8 @@ export const TextInput = ({
                 name={inputName}
                 value={actualState}
                 onChange={onChange}
-                minLength={minLenght}
-                maxLength={maxLenght}
+                min={minValue}
+                max={maxValue}
                 placeholder={placeholder ? placeholderText : ""}
                 required={isRequired}
             />
