@@ -1,0 +1,15 @@
+.create-book{
+    display: flex;
+    flex-direction: column;
+
+    padding: 2rem 6rem ;
+    height: 90vh;
+    width: 100%;
+    background-color: white;
+}
+.create-book__title{
+    display: flex;
+}
+.create-book__title h2{
+    font-size: 1.5rem;
+}

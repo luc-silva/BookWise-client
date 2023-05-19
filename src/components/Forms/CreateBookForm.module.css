@@ -11,8 +11,17 @@
 .book-form__book-details {
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
     gap: 1rem;
     width: 60%;
+    height: 100%;
+}
+.book-form__submit input[type="submit"]{
+    padding: 0.5rem 1rem;
+    background-color: royalblue;
+    color: white;
 }
 .input-container {
     flex-direction: column;
