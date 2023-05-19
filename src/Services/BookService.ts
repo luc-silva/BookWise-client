@@ -17,7 +17,24 @@ class BookService extends Service {
      * @returns Result of the http request
      */
     public async createBook(data: any, token: string): Promise<any> {
-        return await axios.post(this.ending_point, data, this.createHeaders(token));
+        return await axios.post(
+            this.ending_point,
+            data,
+            this.createHeaders(token)
+        );
+    }
+
+    /**
+     * Get details of a book with given book id.
+     * @param bookId Book id.
+     * @param token User session auth token.
+     * @returns Book details
+     */
+    public async getUserBookById(bookId: string, token: string): Promise<any> {
+        return await axios.get(
+            `${this.ending_point}/${bookId}`,
+            this.createHeaders(token)
+        );
     }
 }
 
