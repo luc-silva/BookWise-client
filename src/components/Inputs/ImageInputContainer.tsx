@@ -2,6 +2,7 @@ import { FileInput } from "./FileInput";
 import { InputContainer } from "./InputContainer";
 import styles from "./ImageInputContainer.module.css";
 import { ChangeEvent, useState } from "react";
+import { ImageContainer } from "../Containers/ImageContainer";
 
 export const ImageInputContainer = () => {
     let [imageBlob, setImageBlob] = useState(null as null | File);
@@ -21,7 +22,7 @@ export const ImageInputContainer = () => {
 
     return (
         <div className={styles["image-container"]}>
-            <img src={imageObject} alt="Image" />
+            <ImageContainer imageObject={imageObject} />
             <InputContainer className={styles["input-container"]}>
                 <FileInput
                     acceptedExtensions=".png, .jpg"
