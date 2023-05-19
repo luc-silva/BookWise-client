@@ -1,5 +1,6 @@
 .bookshelf-container{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 2.2rem;
+    grid-template-columns: repeat(5,  minmax(15%, 20%) );
+    grid-template-rows: repeat(auto,  auto);
+    gap: 1rem;
 }

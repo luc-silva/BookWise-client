@@ -1,7 +1,8 @@
 import { BookshelfContainer } from "../components/Containers/BookshelfContainer";
+import { StatusDisplay } from "../components/Display/StatusDisplay";
 import styles from "./Bookshelf.module.css";
 
-export const Bookshelf = () => {
+export const Bookshelf = ({user}:{user:UserSession}) => {
     return (
         <main className={styles["bookshelf"]}>
             <div className={styles["bookshelf__main"]}>
@@ -9,11 +10,16 @@ export const Bookshelf = () => {
                     <h2>Bookshelf</h2>
                 </div>
             </div>
-            <div className={styles["bookshelf__button-panel"]}>
-                <button className="add-book-popup-btn">Add</button>
+            <div className={styles["bookshelf__status"]}>
+                <StatusDisplay />
             </div>
-            <section className="bookshelf__container">
-                <BookshelfContainer />
+            <section className={styles["bookshelf__container__main"]}>
+                <div className={styles["bookshelf__button-panel"]}>
+                    <button className="">Add</button>
+                </div>
+                <div className={styles["bookshelf__container"]}>
+                    <BookshelfContainer userToken={user.token}/>
+                </div>
             </section>
         </main>
     );

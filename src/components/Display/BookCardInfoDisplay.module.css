@@ -3,9 +3,11 @@
     color: white;
 }
 .display__tags {
+    font-size: 0.8rem;
 }
 .display__book-status {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    font-size: 0.8rem;
 }
