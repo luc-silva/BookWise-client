@@ -1,9 +1,8 @@
 .bookshelf{
     display: flex;
     flex-direction: column;
-    padding-top: 2rem;
-    padding-right: 7rem;
-    padding-left: 7rem;
+    gap: 1rem;
+    padding: 2rem 7rem;
 }
 
 .bookshelf__main__title{
@@ -15,10 +14,11 @@
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
 }
-.bookshelf__button-panel{
-    display: flex;
-    gap: 1rem;
+.bookshelf__container__main{
+    width: 100%;
+    position: relative;
 }
+
 button {
     padding: 0.4rem 0.7rem;
     border-radius: 2px;

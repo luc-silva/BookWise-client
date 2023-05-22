@@ -14,9 +14,6 @@ export const Bookshelf = ({user}:{user:UserSession}) => {
                 <StatusDisplay />
             </div>
             <section className={styles["bookshelf__container__main"]}>
-                <div className={styles["bookshelf__button-panel"]}>
-                    <button className="">Add</button>
-                </div>
                 <div className={styles["bookshelf__container"]}>
                     <BookshelfContainer userToken={user.token}/>
                 </div>
