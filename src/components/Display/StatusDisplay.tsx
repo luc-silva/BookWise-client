@@ -1,16 +1,23 @@
+import styles from "./StatusDisplay.module.css";
+
 export const StatusDisplay = () => {
+    let data = {
+        read:3,
+        not_read:4,
+        dropped:0,
+        total_read:40,
+        
+    }
     return (
-        <div id="status-panel">
-            <div>
-                <div id="read-total">Read: 0</div>
-                <div id="not-read-total">Not Read: 0</div>
-                <div id="dropped-total">Dropped: 0</div>
+        <div className={styles["status-panel"]}>
+            <div className={styles["status-panel__details"]}>
+                <p>Read: {data.read}</p>
+                <p>Not Read: {data.not_read}</p>
+                <p>Dropped: {data.dropped}</p>
             </div>
-            <div id="percentage-box">
-                <div id="percentage-books-read-text">
-                    Percentage of books read:
-                </div>
-                <div id="percentage-books-read">0%</div>
+            <div className={styles["status-panel__total"]}>
+                <p>Percentage of books read:</p>
+                <strong>{`${data.total_read}%`}</strong>
             </div>
         </div>
     );

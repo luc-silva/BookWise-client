@@ -2,25 +2,19 @@
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    font-size: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
 
-    flex-grow: 1;
-
-    padding: 0.5rem 1rem;
-    margin: 0.6rem 0 1rem 0;
-    
-    font-size: 0.9rem;
-    color: royalblue;
-    border: 1px solid royalblue ;
+    color: rgb(88, 88, 88);
+    background-color: whitesmoke;
 }
-.percentage-box{
+.status-panel__total{
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-end;
 }
-.percentage-books-read-text{
-    font-size: 0.7rem;
-    width: 80px;
-    text-align: left;
-}
-.percentage-books-read{
+.status-panel__total strong{
     font-size: 2rem;
 }
