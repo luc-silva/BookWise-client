@@ -3,6 +3,7 @@
     height: 280px;
     background-color: whitesmoke;
     position: relative;
+    z-index: 1;
 }
 .book__image{
     width: 100%;
