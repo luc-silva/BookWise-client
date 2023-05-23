@@ -8,6 +8,7 @@ interface CustomInputFields {
     isRequired?: boolean;
 }
 interface BookDetails {
+    status: string;
     title: string;
     author: string;
     pages: number;
@@ -19,7 +20,10 @@ interface BookDetails {
     store_url: string;
     release_date: Date;
 }
-
+interface FetchedBookDetails extends BookDetails {
+    _id: string;
+    user: string;
+}
 interface UserSession {
     token: string;
     isLogged: boolean;
