@@ -15,19 +15,19 @@ export const Login = ({
     setUser: Function;
 }) => {
     let [form, setForm] = useState(loginFormDefaultValues);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
         let target = event.target;
         setForm({ ...form, [target.name]: target.value });
     }
-    
-    function handleSubmit(event: FormEvent) {
+
+    async function handleSubmit(event: FormEvent) {
         event.preventDefault();
 
-        navigate("/bookshelf")
-        UserService.loginUser(form).then((data: { token: string }) => {
+        await UserService.loginUser(form).then((data: { token: string }) => {
             setUser({ ...user, token: data.token, isLogged: true });
+            navigate("/bookshelf");
         });
     }
     return (
