@@ -1,4 +1,4 @@
-import { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig, AxiosResponse } from "axios";
 
 /**
  * Base class to HTTP request services.
@@ -7,7 +7,7 @@ export abstract class Service {
     /**
      * base url for the REST API.
      */
-    protected base_url = "http://localhost:6060/api/v1/"
+    protected base_url = "http://localhost:6060/api/v1/";
 
     /**
      * Create an header containing a bearer auth with the provide user token.
