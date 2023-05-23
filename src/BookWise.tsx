@@ -5,6 +5,8 @@ import { BookDetails } from "./Pages/BookDetails";
 import { CreateBook } from "./Pages/CreateBook";
 import { useState } from "react";
 import { userSessionDefaultValues } from "./constants/defaultValues";
+import { Login } from "./Pages/Login";
+import { Registration } from "./Pages/Registration";
 
 function App() {
     let [user, setUser] = useState(userSessionDefaultValues);
@@ -14,6 +16,9 @@ function App() {
             <Router>
                 <Header user={user} />
                 <Routes>
+                    <Route path="login" element={<Login user={user} setUser={setUser} />} />
+                    <Route path="registration" element={<Registration />} />
+
                     <Route path="book/:id" element={<BookDetails />}>
                         <Route path="book/:id/edit" />
                     </Route>

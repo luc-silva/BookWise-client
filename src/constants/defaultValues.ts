@@ -16,3 +16,11 @@ export const userSessionDefaultValues = {
     token: "",
     isLogged: false,
 };
+export const loginFormDefaultValues = { email: "", password: "" };
+
+export const registrationDefaultValue = {
+    name: { first: "", last: "" },
+    username: "",
+    email: "",
+    password: "",
+};

@@ -21,7 +21,6 @@ interface BookDetails {
 }
 
 interface UserSession {
-    username: string;
     token: string;
     isLogged: boolean;
 }

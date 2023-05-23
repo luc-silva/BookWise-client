@@ -1,0 +1,27 @@
+.registration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    height: 90vh;
+}
+.registration__main {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid whitesmoke;
+}
+.registration__title {
+    width: 100%;
+}
+.registration__title h2 {
+    font-size: 2rem;
+}
+.registration__form {
+    width: 100%;
+}
