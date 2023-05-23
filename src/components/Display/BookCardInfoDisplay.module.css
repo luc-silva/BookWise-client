@@ -2,12 +2,17 @@
     font-size: 1.2rem;
     color: white;
 }
+.display__footer{
+    display: flex;
+    flex-direction: column;
+}
 .display__tags {
     font-size: 0.8rem;
+    line-break: auto;
 }
 .display__book-status {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     font-size: 0.8rem;
-}
+} 

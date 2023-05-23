@@ -1,4 +1,5 @@
 export const createBookFormDefaultValues: BookDetails = {
+    status: "",
     edition: "",
     franchise: "",
     description: "",
@@ -23,4 +24,10 @@ export const registrationDefaultValue = {
     username: "",
     email: "",
     password: "",
+};
+
+export const bookCardDefaultValues: FetchedBookDetails = {
+    ...createBookFormDefaultValues,
+    user: "",
+    _id: "",
 };
