@@ -8,7 +8,7 @@ class UserService extends Service {
     /**
      * Entity endpoint.
      */
-    private ending_point = this.base_url + "user/";
+    private endpoint = this.base_url + "user/";
 
     /**
      * Login a user with given data.
@@ -17,7 +17,7 @@ class UserService extends Service {
      */
     public async loginUser(data: any) {
         return await axios
-            .post(`${this.ending_point}login`, data)
+            .post(`${this.endpoint}login`, data)
             .then(({ data }) => {
                 return data;
             });
@@ -29,7 +29,7 @@ class UserService extends Service {
      * @returns Conclusion error.
      */
     public async registerUser(data: any) {
-        return await axios.post(this.base_url, data).then(({ data }) => {
+        return await axios.post(this.endpoint, data).then(({ data }) => {
             return data;
         });
     }
