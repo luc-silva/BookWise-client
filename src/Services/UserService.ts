@@ -13,7 +13,7 @@ class UserService extends Service {
     /**
      * Login a user with given data.
      * @param data Object containg user data.
-     * @returns Conclusion error.
+     * @returns Conclusion message.
      */
     public async loginUser(data: any) {
         return await axios
@@ -26,12 +26,24 @@ class UserService extends Service {
     /**
      * Register a user with given data.
      * @param data Object containg user data.
-     * @returns Conclusion error.
+     * @returns Conclusion message.
      */
     public async registerUser(data: any) {
         return await axios.post(this.endpoint, data).then(({ data }) => {
             return data;
         });
+    }
+    /**
+     * Get user books IDs.
+     * @param token User auth token.
+     * @returns Array of book IDs.
+     */
+    public async getUserBooks(userToken: string) {
+        return await axios
+            .get(`${this.endpoint}/books`, this.createHeaders(userToken))
+            .then(({ data }) => {
+                return data;
+            });
     }
 }
 export default new UserService();
