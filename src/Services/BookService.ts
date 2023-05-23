@@ -8,7 +8,7 @@ class BookService extends Service {
     /**
      * Entity endpoint
      */
-    private ending_point = this.base_url + "book";
+    private endpoint = this.base_url + "book";
 
     /**
      * Creates a book instance with given data.
@@ -17,11 +17,7 @@ class BookService extends Service {
      * @returns Result of the http request
      */
     public async createBook(data: any, token: string): Promise<any> {
-        return await axios.post(
-            this.ending_point,
-            data,
-            this.createHeaders(token)
-        );
+        return await axios.post(this.endpoint, data, this.createHeaders(token));
     }
 
     /**
@@ -32,9 +28,17 @@ class BookService extends Service {
      */
     public async getUserBookById(bookId: string, token: string): Promise<any> {
         return await axios.get(
-            `${this.ending_point}/${bookId}`,
+            `${this.endpoint}/${bookId}`,
             this.createHeaders(token)
         );
+    }
+
+    public async getBookDetails(bookId: string, token: string) {
+        return await axios
+            .get(`${this.endpoint}/${bookId}`, this.createHeaders(token))
+            .then(({ data }) => {
+                return data;
+            });
     }
 }
 
