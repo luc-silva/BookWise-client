@@ -55,7 +55,7 @@ export const CreateBookForm = ({ user }: { user: UserSession }) => {
                 </InputContainer>
                 <InputContainer className={styles["input-container"]}>
                     <TextInput
-                        actualState={bookDetails.author}
+                        actualState={bookDetails.book_author}
                         inputName="author"
                         label
                         labelText="Author"

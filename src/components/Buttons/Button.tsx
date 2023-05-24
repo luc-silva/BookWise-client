@@ -4,11 +4,11 @@ import styles from "./Button.module.css";
 export const Button = ({
     onClick,
     text,
-    type,
+    type = "action" ,
     fullWidth
 }: {
     text: string;
-    type: "action" | "remove";
+    type?: "action" | any;
     onClick: MouseEventHandler;
     fullWidth?:boolean
 }) => {

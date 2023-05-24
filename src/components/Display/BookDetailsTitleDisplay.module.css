@@ -1,19 +1,29 @@
-.extra, .title{
+.extra,
+.title {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 0.5rem;
 }
-.title h2{
+.title h2 {
     color: black;
     font-size: 2rem;
 }
-.title em{
+.title em {
     font-size: 0.9rem;
 }
-.extra:first-child{
+.extra:first-child {
     font-size: 1.3rem;
 }
 .extra:last-child {
     font-size: 1rem;
+}
+.book--read {
+    color: royalblue;
+}
+.book--not-read {
+    color: sandybrown;
+}
+.book--dropped {
+    color: indianred;
 }

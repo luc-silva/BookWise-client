@@ -1,0 +1,8 @@
+.tags, .description{
+    display: flex;
+    flex-direction: column;
+}
+.tags div, .description div{
+    font-size: 0.9rem;
+    color: rgb(70, 70, 70);
+}

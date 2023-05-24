@@ -19,7 +19,7 @@ function App() {
                     <Route path="login" element={<Login user={user} setUser={setUser} />} />
                     <Route path="registration" element={<Registration />} />
 
-                    <Route path="book/:id" element={<BookDetails />}>
+                    <Route path="book/:id" element={<BookDetails token={user.token}/>}>
                         <Route path="book/:id/edit" />
                     </Route>
                     <Route path="add" element={<CreateBook user={user} />} />
