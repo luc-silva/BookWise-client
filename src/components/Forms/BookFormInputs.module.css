@@ -1,0 +1,33 @@
+.submit {
+    padding: 0.5rem 1rem;
+    background-color: royalblue;
+    color: white;
+}
+.input-container {
+    flex-direction: column;
+}
+.extended-input-container {
+    flex-direction: row;
+    justify-content: space-between;
+
+    gap: 1rem;
+}
+.input-container,
+.extended-input-container {
+    display: flex;
+    width: 100%;
+}
+.input-container input,
+.input-container textarea {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+.input-container input::placeholder,
+.input-container textarea::placeholder {
+    color: rgb(181, 181, 181);
+}
+.input-container input:focus,
+.input-container textarea:focus {
+    outline: none;
+}
