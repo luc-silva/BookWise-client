@@ -1,0 +1,13 @@
+.button {
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+    border-radius: 5px;
+    padding: 0.4rem 0.7rem;
+    outline: royalblue solid 1px;
+    color: royalblue;
+}
+.filled{
+    background-color: royalblue;
+    color: white;
+}
