@@ -1,13 +1,16 @@
+import { useEffect, useState } from "react";
+import { statusPanelDefaultValues } from "../../constants/defaultValues";
+import UserService from "../../Services/UserService";
 import styles from "./StatusDisplay.module.css";
 
-export const StatusDisplay = () => {
-    let data = {
-        read:3,
-        not_read:4,
-        dropped:0,
-        total_read:40,
-        
-    }
+export const StatusDisplay = ({ user }: { user: UserSession }) => {
+    let [data, setData] = useState(statusPanelDefaultValues);
+
+    useEffect(() => {
+        if (user.id) {
+            UserService.getUserStatus(user.id, user.token).then(setData);
+        }
+    }, [user.id]);
     return (
         <div className={styles["status-panel"]}>
             <div className={styles["status-panel__details"]}>
