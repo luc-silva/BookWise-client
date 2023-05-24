@@ -18,7 +18,7 @@ interface BookDetails {
     franchise: string;
     edition: string;
     store_url: string;
-    release_date: Date;
+    released_date: string;
 }
 interface FetchedBookDetails extends BookDetails {
     _id: string;

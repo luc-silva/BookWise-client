@@ -9,6 +9,7 @@ import { createBookFormDefaultValues } from "../../constants/defaultValues";
 
 import BookService from "../../Services/BookService";
 import styles from "./CreateBookForm.module.css";
+import { DateInput } from "../Inputs/DateInput";
 
 export const CreateBookForm = ({ user }: { user: UserSession }) => {
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -20,7 +21,6 @@ export const CreateBookForm = ({ user }: { user: UserSession }) => {
     }
     function handleBookDetailsChange(event: ChangeEvent<HTMLElement>) {
         let target = event.target;
-        console.log(target);
         if (
             target instanceof HTMLInputElement ||
             target instanceof HTMLTextAreaElement
@@ -56,7 +56,7 @@ export const CreateBookForm = ({ user }: { user: UserSession }) => {
                 <InputContainer className={styles["input-container"]}>
                     <TextInput
                         actualState={bookDetails.book_author}
-                        inputName="author"
+                        inputName="book_author"
                         label
                         labelText="Author"
                         placeholder
@@ -88,6 +88,31 @@ export const CreateBookForm = ({ user }: { user: UserSession }) => {
                         placeholder
                         placeholderText="III"
                         maxLenght={15}
+                        onChange={handleBookDetailsChange}
+                    />
+                </ExtendedInputContainer>{" "}
+                <ExtendedInputContainer
+                    className={styles["extended-input-container"]}
+                    innerClassName={styles["input-container"]}
+                >
+                    <TextInput
+                        actualState={bookDetails.edition}
+                        inputName="edition"
+                        label
+                        labelText="Edition"
+                        placeholder
+                        placeholderText="Forth Edition"
+                        maxLenght={15}
+                        minLenght={1}
+                        onChange={handleBookDetailsChange}
+                    />
+                    <DateInput
+                        actualState={bookDetails.released_date}
+                        inputName="released_date"
+                        label
+                        labelText="Release Date"
+                        placeholder
+                        placeholderText="10/08/1980"
                         onChange={handleBookDetailsChange}
                     />
                 </ExtendedInputContainer>

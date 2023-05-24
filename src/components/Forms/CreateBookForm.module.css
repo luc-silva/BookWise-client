@@ -13,6 +13,7 @@
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: scroll;
+    padding: 0 2rem;
 
     gap: 1rem;
     width: 60%;
