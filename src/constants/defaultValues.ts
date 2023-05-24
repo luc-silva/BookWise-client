@@ -4,12 +4,17 @@ export const createBookFormDefaultValues: BookDetails = {
     franchise: "",
     description: "",
     title: "",
-    author: "",
+    book_author: "",
     tags: "",
     pages: 0,
     release_date: new Date(),
     store_url: "",
     volume: "",
+};
+export const bookDetailsDefaultValue: FetchedBookDetails = {
+    ...createBookFormDefaultValues,
+    user: "",
+    _id: "",
 };
 
 export const userSessionDefaultValues = {

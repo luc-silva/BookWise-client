@@ -10,7 +10,7 @@ interface CustomInputFields {
 interface BookDetails {
     status: string;
     title: string;
-    author: string;
+    book_author: string;
     pages: number;
     tags: string;
     description: string;
