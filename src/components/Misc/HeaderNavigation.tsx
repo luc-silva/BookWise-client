@@ -13,10 +13,15 @@ export const HeaderNavigation = () => {
                     <NavLink to={"add"}>Add Book</NavLink>
                 </li>
                 <li>
-                    <a href="https://github.com/luc-silva">GitHub</a>
+                    <a href="https://github.com/luc-silva" target="_blank">
+                        GitHub
+                    </a>
                 </li>
                 <li>
-                    <a href="https://www.linkedin.com/in/silva-luc/">
+                    <a
+                        href="https://www.linkedin.com/in/silva-luc/"
+                        target="_blank"
+                    >
                         LinkedIn
                     </a>
                 </li>
