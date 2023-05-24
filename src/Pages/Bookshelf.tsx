@@ -14,7 +14,7 @@ export const Bookshelf = ({ user }: { user: UserSession }) => {
                     </div>
                 </div>
                 <div className={styles["bookshelf__status"]}>
-                    <StatusDisplay />
+                    <StatusDisplay user={user} />
                 </div>
                 <section className={styles["bookshelf__container__main"]}>
                     <div className={styles["bookshelf__container"]}>
