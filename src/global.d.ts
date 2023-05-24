@@ -26,6 +26,7 @@ interface FetchedBookDetails extends BookDetails {
 }
 interface UserSession {
     token: string;
+    id: string;
     isLogged: boolean;
 }
 

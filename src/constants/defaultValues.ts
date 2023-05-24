@@ -20,6 +20,7 @@ export const bookDetailsDefaultValue: FetchedBookDetails = {
 export const userSessionDefaultValues = {
     username: "",
     token: "",
+    id: "",
     isLogged: false,
 };
 export const loginFormDefaultValues = { email: "", password: "" };
@@ -35,4 +36,11 @@ export const bookCardDefaultValues: FetchedBookDetails = {
     ...createBookFormDefaultValues,
     user: "",
     _id: "",
+};
+
+export const statusPanelDefaultValues = {
+    read: 0,
+    not_read: 0,
+    dropped: 0,
+    total_read: 0,
 };

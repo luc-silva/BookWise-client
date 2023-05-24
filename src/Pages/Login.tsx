@@ -25,8 +25,8 @@ export const Login = ({
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
 
-        await UserService.loginUser(form).then((data: { token: string }) => {
-            setUser({ ...user, token: data.token, isLogged: true });
+        await UserService.loginUser(form).then((data: { id:string, token: string }) => {
+            setUser({ ...user, ...data, isLogged: true });
             navigate("/bookshelf");
         });
     }
