@@ -26,16 +26,22 @@ class BookService extends Service {
      * @param token User session auth token.
      * @returns Book details
      */
-    public async getUserBookById(bookId: string, token: string): Promise<any> {
-        return await axios.get(
-            `${this.endpoint}/${bookId}`,
-            this.createHeaders(token)
-        );
-    }
-
     public async getBookDetails(bookId: string, token: string) {
         return await axios
             .get(`${this.endpoint}/${bookId}`, this.createHeaders(token))
+            .then(({ data }) => {
+                return data;
+            });
+    }
+
+    /**
+     * Delete a book with given book id.
+     * @param bookId Book Id.
+     * @param token User session auth token.
+     */
+    public async deleteBook(bookId: string, token: string) {
+        return await axios
+            .delete(`${this.endpoint}/${bookId}`, this.createHeaders(token))
             .then(({ data }) => {
                 return data;
             });
