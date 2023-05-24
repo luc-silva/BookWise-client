@@ -14,7 +14,7 @@ function App() {
     return (
         <div className="BookWise">
             <Router>
-                <Header user={user} />
+                <Header user={user} setUser={setUser}/>
                 <Routes>
                     <Route path="login" element={<Login user={user} setUser={setUser} />} />
                     <Route path="registration" element={<Registration />} />

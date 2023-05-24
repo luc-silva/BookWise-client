@@ -16,3 +16,17 @@
 .header a {
     color: rgb(70, 70, 70);
 }
+.header__side-panel{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+.header__log-out-btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
+
+    color: firebrick;
+}
