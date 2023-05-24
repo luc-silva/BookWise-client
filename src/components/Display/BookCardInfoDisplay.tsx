@@ -5,9 +5,7 @@ export const BookCardInfoDisplay = ({
 }: {
     bookDetails: BookDetails;
 }) => {
-    useEffect(() => {
-        console.log(bookDetails);
-    }, [bookDetails]);
+ 
     return (
         <>
             <div className={styles["display__title"]}>
