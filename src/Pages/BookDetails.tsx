@@ -20,6 +20,14 @@ export const BookDetails = ({ token }: { token: string }) => {
         }
     }, [id, token]);
 
+    function deleteBook() {
+        if (id) {
+            BookService.deleteBook(id, token).then(() => {
+                navigate("/bookshelf")
+            });
+        }
+    }
+
     return (
         <main className={styles["book-details"]}>
             <aside className={styles["book__aside-info"]}>
@@ -52,7 +60,7 @@ export const BookDetails = ({ token }: { token: string }) => {
                 </div>
 
                 <div className={styles["button-panel"]}>
-                    <Button onClick={() => {}} text="Delete" type="remove" />
+                    <Button onClick={deleteBook} text="Delete" type="remove" />
                 </div>
             </section>
         </main>
