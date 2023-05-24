@@ -45,5 +45,13 @@ class UserService extends Service {
                 return data;
             });
     }
+
+    public async getUserStatus(userId: string, userToken: string) {
+        return await axios
+            .get(`${this.endpoint}${userId}/status`, this.createHeaders(userToken))
+            .then(({ data }) => {
+                return data;
+            });
+    }
 }
 export default new UserService();
