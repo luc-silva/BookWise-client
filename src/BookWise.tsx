@@ -7,27 +7,39 @@ import { useState } from "react";
 import { userSessionDefaultValues } from "./constants/defaultValues";
 import { Login } from "./Pages/Login";
 import { Registration } from "./Pages/Registration";
+import styles from "./BookWise.module.css";
 
 function App() {
     let [user, setUser] = useState(userSessionDefaultValues);
 
     return (
-        <div className="BookWise">
+        <div className={styles["BookWise"]}>
             <Router>
-                <Header user={user} setUser={setUser}/>
-                <Routes>
-                    <Route path="login" element={<Login user={user} setUser={setUser} />} />
-                    <Route path="registration" element={<Registration />} />
+                <Header user={user} setUser={setUser} />
+                <div className={styles["bookwise__page"]}>
+                    <Routes>
+                        <Route
+                            path="login"
+                            element={<Login user={user} setUser={setUser} />}
+                        />
+                        <Route path="registration" element={<Registration />} />
 
-                    <Route path="book/:id" element={<BookDetails token={user.token}/>}>
-                        <Route path="book/:id/edit" />
-                    </Route>
-                    <Route path="add" element={<CreateBook user={user} />} />
-                    <Route
-                        path="bookshelf"
-                        element={<Bookshelf user={user} />}
-                    />
-                </Routes>
+                        <Route
+                            path="book/:id"
+                            element={<BookDetails token={user.token} />}
+                        >
+                            <Route path="book/:id/edit" />
+                        </Route>
+                        <Route
+                            path="add"
+                            element={<CreateBook user={user} />}
+                        />
+                        <Route
+                            path="bookshelf"
+                            element={<Bookshelf user={user} />}
+                        />
+                    </Routes>
+                </div>
             </Router>
         </div>
     );
