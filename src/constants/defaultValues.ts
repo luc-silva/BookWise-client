@@ -7,7 +7,7 @@ export const createBookFormDefaultValues: BookDetails = {
     book_author: "",
     tags: "",
     pages: 0,
-    released_date: "",
+    released_date: new Date(),
     store_url: "",
     volume: "",
 };
