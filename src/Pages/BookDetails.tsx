@@ -9,25 +9,29 @@ import styles from "./BookDetails.module.css";
 import { BookMiscInfoDisplay } from "../components/Display/BookMiscInfoDisplay";
 import { BookAboutDisplay } from "../components/Display/BookAboutDisplay";
 
-export const BookDetails = ({ token }: { token: string }) => {
+export const BookDetails = ({ user }: { user: UserSession }) => {
     let [bookDetails, setBookDetails] = useState(bookDetailsDefaultValue);
     let { id } = useParams();
     const navigate = useNavigate();
-
-    useEffect(() => {
-        if (id) {
-            BookService.getBookDetails(id, token).then(setBookDetails);
-        }
-    }, [id, token]);
-
+    
     function deleteBook() {
         if (id) {
-            BookService.deleteBook(id, token).then(() => {
-                navigate("/bookshelf")
+            BookService.deleteBook(id, user.token).then(() => {
+                navigate("/bookshelf");
             });
         }
     }
-
+    
+    useEffect(() => {
+        if(!user.isLogged){
+            navigate("/login")
+        }
+    })
+    useEffect(() => {
+        if (id) {
+            BookService.getBookDetails(id, user.token).then(setBookDetails);
+        }
+    }, [id, user]);
     return (
         <main className={styles["book-details"]}>
             <aside className={styles["book__aside-info"]}>
@@ -41,10 +45,12 @@ export const BookDetails = ({ token }: { token: string }) => {
                         href={`/book/${id}/edit`}
                         targetSelf
                     />
-                    <ExternalLinkButton
-                        buttonText="Buy book"
-                        href={bookDetails.store_url}
-                    />
+                    {bookDetails.store_url && (
+                        <ExternalLinkButton
+                            buttonText="Buy book"
+                            href={bookDetails.store_url}
+                        />
+                    )}
                 </div>
                 <div className={styles["book__misc"]}>
                     <BookMiscInfoDisplay bookDetails={bookDetails} />

@@ -1,11 +1,11 @@
 import { FormEvent, useEffect, useState } from "react";
-import { BookFormInputs } from "../Forms/BookFormInputs.module";
+import { BookFormInputs } from "../Forms/BookFormInputs";
 import { useNavigate, useParams } from "react-router-dom";
 import { bookDetailsDefaultValue } from "../../constants/defaultValues";
 import BookService from "../../Services/BookService";
 import styles from "./EditBook.module.css";
 
-export const EditBook = ({ token }: { token: string }) => {
+export const EditBook = ({ user }: { user: UserSession }) => {
     let [bookData, setBookData] = useState(bookDetailsDefaultValue);
     let { id } = useParams();
     const navigate = useNavigate();
@@ -14,17 +14,22 @@ export const EditBook = ({ token }: { token: string }) => {
         event.preventDefault();
 
         if (id) {
-            BookService.updateBook(id, token, bookData).then(() => {
+            BookService.updateBook(id, user.token, bookData).then(() => {
                 navigate(`/book/${id}`);
             });
         }
     }
 
     useEffect(() => {
-        if (id) {
-            BookService.getBookDetails(id, token).then(setBookData);
+        if(!user.isLogged){
+            navigate("/login")
         }
-    }, [id, token]);
+    }, [user])
+    useEffect(() => {
+        if (id) {
+            BookService.getBookDetails(id, user.token).then(setBookData);
+        }
+    }, [id, user]);
 
     return (
         <main className={styles["edit-book"]}>

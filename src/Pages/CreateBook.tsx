@@ -1,11 +1,18 @@
-import { FormEvent } from "react";
+import { useEffect } from "react";
 import { CreateBookForm } from "../components/Forms/CreateBookForm";
 import { RedirectUser } from "../utils/tools";
-import styles from "./CreateBook.module.css";
 import BookService from "../Services/BookService";
+import styles from "./CreateBook.module.css";
+import { useNavigate } from "react-router-dom";
 
 export const CreateBook = ({ user }: { user: UserSession }) => {
-
+    const navigate = useNavigate()
+    
+    useEffect(() => {
+        if (!user.isLogged) {
+            navigate("/login");
+        }
+    });
     return (
         <>
             <RedirectUser user={user} />

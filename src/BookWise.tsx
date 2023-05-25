@@ -27,11 +27,11 @@ function App() {
 
                         <Route
                             path="book/:id/"
-                            element={<BookDetails token={user.token} />}
+                            element={<BookDetails user={user} />}
                         />
                         <Route
                             path="book/:id/edit"
-                            element={<EditBook token={user.token} />}
+                            element={<EditBook user={user} />}
                         />
                         <Route
                             path="add"
