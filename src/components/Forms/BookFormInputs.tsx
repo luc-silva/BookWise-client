@@ -33,7 +33,7 @@ export const BookFormInputs = ({
                     actualState={bookData.title}
                     inputName="title"
                     label
-                    labelText="Title"
+                    labelText="* Title"
                     placeholder
                     placeholderText="Dom Quixote"
                     maxLenght={15}
@@ -46,12 +46,13 @@ export const BookFormInputs = ({
                     actualState={bookData.book_author}
                     inputName="book_author"
                     label
-                    labelText="Author"
+                    labelText="* Author"
                     placeholder
                     placeholderText="HP Lovercraft"
                     maxLenght={15}
                     minLenght={1}
                     onChange={handleBookDataChange}
+                    isRequired
                 />
             </InputContainer>
             <ExtendedInputContainer
@@ -62,11 +63,12 @@ export const BookFormInputs = ({
                     actualState={bookData.pages}
                     inputName="pages"
                     label
-                    labelText="Pages"
+                    labelText="* Pages"
                     placeholder
                     placeholderText="123"
                     maxValue={1000}
                     onChange={handleBookDataChange}
+                    isRequired
                 />
                 <TextInput
                     actualState={bookData.volume}
@@ -87,7 +89,7 @@ export const BookFormInputs = ({
                     actualState={bookData.edition}
                     inputName="edition"
                     label
-                    labelText="Edition"
+                    labelText="* Edition"
                     placeholder
                     placeholderText="Forth Edition"
                     maxLenght={15}
@@ -109,7 +111,7 @@ export const BookFormInputs = ({
                     actualState={bookData.tags}
                     inputName="tags"
                     label
-                    labelText="Tags"
+                    labelText="* Tags"
                     placeholder
                     placeholderText="horror, fiction"
                     maxLenght={15}
@@ -131,7 +133,7 @@ export const BookFormInputs = ({
                 />
             </InputContainer>
             <InputContainer className={styles["input-container"]}>
-                <TextareaInput
+                <TextInput
                     actualState={bookData.description}
                     inputName="description"
                     maxLenght={250}
@@ -143,6 +145,18 @@ export const BookFormInputs = ({
                 />
             </InputContainer>
             <InputContainer className={styles["input-container"]}>
+                <TextareaInput
+                    actualState={bookData.description}
+                    inputName="store_url"
+                    maxLenght={250}
+                    onChange={handleBookDataChange}
+                    label
+                    labelText="Store Url"
+                    placeholder
+                    placeholderText="www.bookstore.com/example"
+                />
+            </InputContainer>
+            <InputContainer className={styles["input-container"]}>
                 <SelectInput
                     actualValue={bookData.status}
                     arrOfOptions={statusOptions}
@@ -150,7 +164,7 @@ export const BookFormInputs = ({
                     onChange={handleBookDataChange}
                     isRequired
                     label
-                    labelText="Status"
+                    labelText="* Status"
                 />
             </InputContainer>
             <div className={styles["book-form__submit"]}>
