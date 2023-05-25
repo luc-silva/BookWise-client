@@ -46,6 +46,24 @@ class BookService extends Service {
                 return data;
             });
     }
+
+    /**
+     * Update a book with given data.
+     * @param bookId Book Id.
+     * @param token User session auth token.
+     * @param data Book updated details
+     */
+    public async updateBook(bookId: string, token: string, data: BookDetails) {
+        return await axios
+            .patch(
+                `${this.endpoint}/${bookId}`,
+                data,
+                this.createHeaders(token)
+            )
+            .then(({ data }) => {
+                return data;
+            });
+    }
 }
 
 export default new BookService();
