@@ -1,11 +1,10 @@
 import { FormEvent, useState } from "react";
 import { ImageInputContainer } from "../Inputs/ImageInputContainer";
-
+import { BookFormInputs } from "./BookFormInputs";
 import { createBookFormDefaultValues } from "../../constants/defaultValues";
 
 import BookService from "../../Services/BookService";
 import styles from "./CreateBookForm.module.css";
-import { BookFormInputs } from "./BookFormInputs.module";
 
 export const CreateBookForm = ({ user }: { user: UserSession }) => {
     let [bookDetails, setBookDetails] = useState(createBookFormDefaultValues);

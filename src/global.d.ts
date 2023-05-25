@@ -23,6 +23,8 @@ interface BookDetails {
 interface FetchedBookDetails extends BookDetails {
     _id: string;
     user: string;
+    createdAt: Date;
+    updatedAt: Date
 }
 interface UserSession {
     token: string;

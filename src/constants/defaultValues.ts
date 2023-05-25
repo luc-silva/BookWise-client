@@ -15,6 +15,8 @@ export const bookDetailsDefaultValue: FetchedBookDetails = {
     ...createBookFormDefaultValues,
     user: "",
     _id: "",
+    createdAt: new Date(),
+    updatedAt: new Date()
 };
 
 export const userSessionDefaultValues = {
@@ -36,6 +38,8 @@ export const bookCardDefaultValues: FetchedBookDetails = {
     ...createBookFormDefaultValues,
     user: "",
     _id: "",
+    createdAt: new Date(),
+    updatedAt: new Date()
 };
 
 export const statusPanelDefaultValues = {

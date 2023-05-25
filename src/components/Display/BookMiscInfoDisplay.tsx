@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import styles from "./BookMiscInfoDisplay.module.css";
 
 export const BookMiscInfoDisplay = ({
@@ -9,11 +10,11 @@ export const BookMiscInfoDisplay = ({
         <>
             <div className={styles["date"]}>
                 <strong>Date Criated:</strong>
-                <p>12/312/32</p>
+                <p>{format(new Date(bookDetails.updatedAt), "dd/MM/yyyy")}</p>
             </div>
             <div className={[styles["date"], styles["date-updated"]].join(" ")}>
                 <strong>Last Time Updated:</strong>
-                <p>12/312/32</p>
+                <p>{format(new Date(bookDetails.createdAt), "dd/MM/yyyy")}</p>
             </div>
             <div className={styles["id"]}>
                 <em>id:{bookDetails._id}</em>
