@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 export const DateInput = ({
     inputName,
     onChange,
@@ -7,7 +9,7 @@ export const DateInput = ({
     placeholder,
     isRequired = true,
     actualState
-}: CustomInputFields & {actualState:string}) => {
+}: CustomInputFields & {actualState:Date}) => {
     return (
         <>
             {label && <label htmlFor={inputName}>{labelText}</label>}
@@ -16,7 +18,7 @@ export const DateInput = ({
                 name={inputName}
                 onChange={onChange}
                 required={isRequired}
-                value={actualState}
+                value={format(new Date(actualState), "yyyy-MM-dd")}
                 placeholder={placeholder ? placeholderText : ""}
             />
         </>
