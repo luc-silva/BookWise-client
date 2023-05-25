@@ -8,6 +8,7 @@ import { userSessionDefaultValues } from "./constants/defaultValues";
 import { Login } from "./Pages/Login";
 import { Registration } from "./Pages/Registration";
 import styles from "./BookWise.module.css";
+import { EditBook } from "./components/Subpages/EditBook";
 
 function App() {
     let [user, setUser] = useState(userSessionDefaultValues);
@@ -25,11 +26,13 @@ function App() {
                         <Route path="registration" element={<Registration />} />
 
                         <Route
-                            path="book/:id"
+                            path="book/:id/"
                             element={<BookDetails token={user.token} />}
-                        >
-                            <Route path="book/:id/edit" />
-                        </Route>
+                        />
+                        <Route
+                            path="book/:id/edit"
+                            element={<EditBook token={user.token} />}
+                        />
                         <Route
                             path="add"
                             element={<CreateBook user={user} />}

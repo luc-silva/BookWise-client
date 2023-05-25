@@ -44,3 +44,9 @@ export const statusPanelDefaultValues = {
     dropped: 0,
     total_read: 0,
 };
+
+export const statusOptions = [
+    { value: "Not Read", text: "Not Read" },
+    { value: "Read", text: "Read" },
+    { value: "Dropped", text: "Dropped" },
+];

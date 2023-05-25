@@ -15,9 +15,9 @@ export const ExtendedInputContainer = ({
 }) => {
     return (
         <div style={styles} className={className}>
-            {children.map((element) => {
+            {children.map((element, index) => {
                 return (
-                    <div className={innerClassName}>
+                    <div className={innerClassName} key={index}>
                         {element}
                     </div>
                 );

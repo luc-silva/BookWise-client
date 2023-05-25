@@ -18,16 +18,19 @@
     width: 100%;
 }
 .input-container input,
-.input-container textarea {
+.input-container textarea,
+.input-container select {
     background-color: whitesmoke;
     border-radius: 5px;
     padding: 0.5rem;
 }
 .input-container input::placeholder,
-.input-container textarea::placeholder {
+.input-container textarea::placeholder,
+.input-container select::placeholder {
     color: rgb(181, 181, 181);
 }
 .input-container input:focus,
-.input-container textarea:focus {
+.input-container textarea:focus,
+.input-container select:focus {
     outline: none;
 }

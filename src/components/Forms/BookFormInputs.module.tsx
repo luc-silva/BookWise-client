@@ -6,6 +6,8 @@ import { NumberInput } from "../Inputs/NumberInput";
 import { TextInput } from "../Inputs/TextInput";
 import { TextareaInput } from "../Inputs/TextareaInput";
 import styles from "./BookFormInputs.module.css";
+import { SelectInput } from "../Inputs/SelectInput";
+import { statusOptions } from "../../constants/defaultValues";
 
 export const BookFormInputs = ({
     bookData,
@@ -18,7 +20,8 @@ export const BookFormInputs = ({
         let target = event.target;
         if (
             target instanceof HTMLInputElement ||
-            target instanceof HTMLTextAreaElement
+            target instanceof HTMLTextAreaElement ||
+            target instanceof HTMLSelectElement
         ) {
             setBookData({ ...bookData, [target.name]: target.value });
         }
@@ -135,13 +138,26 @@ export const BookFormInputs = ({
                     onChange={handleBookDataChange}
                     label
                     labelText="Description"
+                    placeholder
+                    placeholderText="Tell us about the book"
+                />
+            </InputContainer>
+            <InputContainer className={styles["input-container"]}>
+                <SelectInput
+                    actualValue={bookData.status}
+                    arrOfOptions={statusOptions}
+                    inputName="status"
+                    onChange={handleBookDataChange}
+                    isRequired
+                    label
+                    labelText="Status"
                 />
             </InputContainer>
             <div className={styles["book-form__submit"]}>
                 <input
                     className={styles["submit"]}
                     type="submit"
-                    value="Adicionar Livro"
+                    value="Save"
                 />
             </div>
         </>

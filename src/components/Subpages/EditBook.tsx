@@ -1,45 +1,49 @@
-export const EditBook = () => {
+import { FormEvent, useEffect, useState } from "react";
+import { BookFormInputs } from "../Forms/BookFormInputs.module";
+import { useNavigate, useParams } from "react-router-dom";
+import { bookDetailsDefaultValue } from "../../constants/defaultValues";
+import BookService from "../../Services/BookService";
+import styles from "./EditBook.module.css";
+
+export const EditBook = ({ token }: { token: string }) => {
+    let [bookData, setBookData] = useState(bookDetailsDefaultValue);
+    let { id } = useParams();
+    const navigate = useNavigate();
+
+    function handleSubmit(event: FormEvent) {
+        event.preventDefault();
+
+        if (id) {
+            BookService.updateBook(id, token, bookData).then(() => {
+                navigate(`/book/${id}`);
+            });
+        }
+    }
+
+    useEffect(() => {
+        if (id) {
+            BookService.getBookDetails(id, token).then(setBookData);
+        }
+    }, [id, token]);
+
     return (
-        <div id="edit-popup">
-        <h2>Edit</h2>
-        <div>
-            <p>Title:</p>
-            <input type="text" id="edit-title" />
-        </div>
-        <div>
-            <p>Author:</p>
-            <input type="text" id="edit-author" />
-        </div>
-        <div id="pages-tags">
-            <div>
-                <span>Pages:</span>
-                <input type="text" id="edit-pages" />
-            </div>
-            <div>
-                <span>Tags:</span>
-                <input type="text" id="edit-tags" />
-            </div>
-            <div>
-                <span>Status</span>
-                <select id="edit-status">
-                    <option value="Read">Read</option>
-                    <option value="Not Read">Not Read</option>
-                    <option value="Dropped">Dropped</option>
-                </select>
-            </div>
-        </div>
-        <div>
-            <p>Webstore Link:</p>
-            <input type="text" id="edit-webstorelink" />
-        </div>
-        <div>
-            <p>Description:</p>
-            <textarea id="description-input" />
-        </div>
-        <div id="edit-btn-panel">
-            <button id="save-changes">Save Changes</button>
-            <button id="close-edit-panel">Close</button>
-        </div>
-    </div>
-    )
-}
+        <main className={styles["edit-book"]}>
+            <section className={styles["edit-book__main"]}>
+                <div className={styles["edit-book__title"]}>
+                    <h2>Edit Book Info</h2>
+                </div>
+                <div className={styles["edit-book__form"]}>
+                    <form
+                        action="POST"
+                        onSubmit={handleSubmit}
+                    >
+                        <BookFormInputs
+                            bookData={bookData}
+                            setBookData={setBookData}
+                        />
+                    </form>
+                </div>
+            </section>
+        </main>
+    );
+};
