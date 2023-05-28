@@ -5,6 +5,7 @@ import { bookDetailsInitialValues } from "../../constants/defaultValues";
 
 import BookService from "../../Services/BookService";
 import styles from "./CreateBookForm.module.css";
+import { useNavigate } from "react-router-dom";
 
 export const CreateBookForm = ({
     user,
@@ -17,6 +18,7 @@ export const CreateBookForm = ({
 }) => {
     let [bookDetails, setBookDetails] = useState(bookDetailsInitialValues);
     let [imageBlob, setImageBlob] = useState(null as null | File);
+    const navigate = useNavigate()
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -28,8 +30,8 @@ export const CreateBookForm = ({
             formData.append("bookDetails", JSON.stringify(bookDetails));
 
             BookService.createBook(formData, user.token)
-                .then((data) => {
-                    console.log(data);
+                .then(() => {
+                    navigate("/")
                 })
                 .catch(({ response }) => {
                     toggleToast(true);

@@ -4,8 +4,8 @@ import { PasswordInput } from "../components/Inputs/PasswordInput";
 import { TextInput } from "../components/Inputs/TextInput";
 import { useNavigate } from "react-router-dom";
 import { loginFormInitialValues } from "../constants/defaultValues";
+import { Link } from "react-router-dom";
 import UserService from "../Services/UserService";
-import { AxiosError } from "axios";
 import styles from "./Login.module.css";
 
 export const Login = ({
@@ -80,6 +80,9 @@ export const Login = ({
                         <input type="submit" className={styles["submit-btn"]} />
                     </div>
                 </form>
+                <div>
+                    <Link to={"/register"}>Create Account</Link>
+                </div>
             </div>
         </main>
     );

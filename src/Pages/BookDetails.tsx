@@ -26,7 +26,7 @@ export const BookDetails = ({ user }: { user: UserSession }) => {
     function deleteBook() {
         if (id) {
             BookService.deleteBook(id, user.token).then(() => {
-                navigate("/bookshelf");
+                navigate("/");
             });
         }
     }

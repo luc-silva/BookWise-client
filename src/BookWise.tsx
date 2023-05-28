@@ -39,7 +39,7 @@ function App() {
                             }
                         />
                         <Route
-                            path="registration"
+                            path="register"
                             element={
                                 <Registration
                                     setToastMessage={setToastMessage}
@@ -73,7 +73,7 @@ function App() {
                             }
                         />
                         <Route
-                            path="bookshelf"
+                            path=""
                             element={<Bookshelf user={user} />}
                         />
                     </Routes>

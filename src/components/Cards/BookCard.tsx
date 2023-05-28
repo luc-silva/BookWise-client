@@ -28,7 +28,6 @@ export const BookCard = ({
         if (bookId) {
             BookService.getBookDetails(bookId, userToken).then(
                 (data: FetchedBookDetails) => {
-                    console.log(cardStatus.isLoading)
                     setBookData(data);
                     setImage(createImageBlob(data.image.buffer.data));
                     toggleCardStatus({ ...cardStatus, isLoading: false });

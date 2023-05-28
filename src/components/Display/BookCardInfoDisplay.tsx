@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import styles from "./BookCardInfoDisplay.module.css";
+import { format } from "date-fns";
 export const BookCardInfoDisplay = ({
     bookDetails,
 }: {
     bookDetails: BookDetails;
 }) => {
- 
     return (
         <>
             <div className={styles["display__title"]}>
@@ -17,7 +17,10 @@ export const BookCardInfoDisplay = ({
                 </div>
                 <div className={styles["display__book-status"]}>
                     <strong>{bookDetails.status}</strong>
-                    <p>added: 10/21/3234</p>
+                    <p>{`Released:${format(
+                        new Date(bookDetails.released_date),
+                        "dd/MM/yyyy"
+                    )}`}</p>
                 </div>
             </div>
         </>

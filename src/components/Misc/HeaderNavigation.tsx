@@ -7,7 +7,7 @@ export const HeaderNavigation = () => {
         <nav className={styles["header-navigation"]}>
             <ul>
                 <li>
-                    <NavLink to={"bookshelf"}>Bookshelf</NavLink>
+                    <NavLink to={"/"}>Bookshelf</NavLink>
                 </li>
                 <li>
                     <NavLink to={"add"}>Add Book</NavLink>

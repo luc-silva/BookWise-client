@@ -33,7 +33,6 @@ export const RegistrationForm = ({
     function handleSubmit(event: FormEvent) {
         event.preventDefault();
 
-        console.log(form);
         UserService.registerUser(form)
             .then((data) => {
                 navigate("/login");
