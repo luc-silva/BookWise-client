@@ -73,13 +73,21 @@ export const registrationFormInitialValue = {
 };
 
 /**
- * Status initial state
+ * Status panel initial state
  */
 export const statusPanelInitialValues = {
     read: 0,
     not_read: 0,
     dropped: 0,
     total_read: 0,
+};
+
+/**
+ * Component status initial state
+ */
+export const componentStatusInitialValues = {
+    isLoading: true,
+    isError: false,
 };
 
 //Misc
