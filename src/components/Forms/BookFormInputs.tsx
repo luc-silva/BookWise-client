@@ -1,4 +1,3 @@
-import { ChangeEvent } from "react";
 import { DateInput } from "../Inputs/DateInput";
 import { ExtendedInputContainer } from "../Inputs/ExtendedInputContainer";
 import { InputContainer } from "../Inputs/InputContainer";
@@ -8,24 +7,16 @@ import { TextareaInput } from "../Inputs/TextareaInput";
 import { SelectInput } from "../Inputs/SelectInput";
 import { statusOptions } from "../../constants/defaultValues";
 import styles from "./BookFormInputs.module.css";
+import { ChangeEventHandler } from "react";
 
 export const BookFormInputs = ({
     bookData,
-    setBookData,
+    handleBookDataChange,
 }: {
     bookData: BookDetails;
-    setBookData: Function;
+    handleBookDataChange: ChangeEventHandler<HTMLInputElement>;
 }) => {
-    function handleBookDataChange(event: ChangeEvent<HTMLElement>) {
-        let target = event.target;
-        if (
-            target instanceof HTMLInputElement ||
-            target instanceof HTMLTextAreaElement ||
-            target instanceof HTMLSelectElement
-        ) {
-            setBookData({ ...bookData, [target.name]: target.value });
-        }
-    }
+    
     return (
         <>
             <InputContainer className={styles["input-container"]}>
@@ -144,6 +135,7 @@ export const BookFormInputs = ({
                     labelText="Description"
                     placeholder
                     placeholderText="Tell us about the book"
+                    isRequired={false}
                 />
             </InputContainer>
             <InputContainer className={styles["input-container"]}>

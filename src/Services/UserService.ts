@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { Service } from "./Service";
 
 /**
@@ -20,7 +20,8 @@ class UserService extends Service {
             .post(`${this.endpoint}login`, data)
             .then(({ data }) => {
                 return data;
-            });
+            })
+            
     }
 
     /**
@@ -48,7 +49,10 @@ class UserService extends Service {
 
     public async getUserStatus(userId: string, userToken: string) {
         return await axios
-            .get(`${this.endpoint}${userId}/status`, this.createHeaders(userToken))
+            .get(
+                `${this.endpoint}${userId}/status`,
+                this.createHeaders(userToken)
+            )
             .then(({ data }) => {
                 return data;
             });

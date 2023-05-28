@@ -6,7 +6,15 @@ import { bookDetailsInitialValues } from "../../constants/defaultValues";
 import BookService from "../../Services/BookService";
 import styles from "./CreateBookForm.module.css";
 
-export const CreateBookForm = ({ user }: { user: UserSession }) => {
+export const CreateBookForm = ({
+    user,
+    setToastMessage,
+    toggleToast,
+}: {
+    user: UserSession;
+    toggleToast: Function;
+    setToastMessage: Function;
+}) => {
     let [bookDetails, setBookDetails] = useState(bookDetailsInitialValues);
     let [imageBlob, setImageBlob] = useState(null as null | File);
 
@@ -17,14 +25,29 @@ export const CreateBookForm = ({ user }: { user: UserSession }) => {
 
         if (imageBlob) {
             formData.append("imageField", imageBlob);
-            formData.append("bookDetails", JSON.stringify(bookDetails))
+            formData.append("bookDetails", JSON.stringify(bookDetails));
 
-            BookService.createBook(formData, user.token).then((data) => {
-                console.log(data);
-            });
+            BookService.createBook(formData, user.token)
+                .then((data) => {
+                    console.log(data);
+                })
+                .catch(({ response }) => {
+                    toggleToast(true);
+                    setToastMessage(response.data.message);
+                });
         }
     }
 
+    function handleBookDataChange(event: React.ChangeEvent<HTMLElement>) {
+        let target = event.target;
+        if (
+            target instanceof HTMLInputElement ||
+            target instanceof HTMLTextAreaElement ||
+            target instanceof HTMLSelectElement
+        ) {
+            setBookDetails({ ...bookDetails, [target.name]: target.value });
+        }
+    }
     return (
         <form
             action="POST"
@@ -40,7 +63,7 @@ export const CreateBookForm = ({ user }: { user: UserSession }) => {
             <div className={styles["book-form__book-details"]}>
                 <BookFormInputs
                     bookData={bookDetails}
-                    setBookData={setBookDetails}
+                    handleBookDataChange={handleBookDataChange}
                 />
             </div>
         </form>

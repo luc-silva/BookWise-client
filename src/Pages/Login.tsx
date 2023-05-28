@@ -5,14 +5,19 @@ import { TextInput } from "../components/Inputs/TextInput";
 import { useNavigate } from "react-router-dom";
 import { loginFormInitialValues } from "../constants/defaultValues";
 import UserService from "../Services/UserService";
+import { AxiosError } from "axios";
 import styles from "./Login.module.css";
 
 export const Login = ({
     setUser,
     user,
+    toggleToast,
+    setToastMessage,
 }: {
     user: UserSession;
     setUser: Function;
+    toggleToast: Function;
+    setToastMessage: Function;
 }) => {
     let [form, setForm] = useState(loginFormInitialValues);
     const navigate = useNavigate();
@@ -25,10 +30,15 @@ export const Login = ({
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
 
-        await UserService.loginUser(form).then((data: { id:string, token: string }) => {
-            setUser({ ...user, ...data, isLogged: true });
-            navigate("/bookshelf");
-        });
+        await UserService.loginUser(form)
+            .then((data: { id: string; token: string }) => {
+                setUser({ ...user, ...data, isLogged: true });
+                navigate("/bookshelf");
+            })
+            .catch(({ response }) => {
+                toggleToast(true);
+                setToastMessage(response.data.message);
+            });
     }
     return (
         <main className={styles["login"]}>

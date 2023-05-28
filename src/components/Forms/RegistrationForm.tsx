@@ -8,7 +8,13 @@ import { registrationFormInitialValue } from "../../constants/defaultValues";
 import UserService from "../../Services/UserService";
 import styles from "./RegistrationForm.module.css";
 
-export const RegistrationForm = () => {
+export const RegistrationForm = ({
+    setToastMessage,
+    toggleToast,
+}: {
+    toggleToast: Function;
+    setToastMessage: Function;
+}) => {
     let [form, setForm] = useState(registrationFormInitialValue);
     const navigate = useNavigate();
 
@@ -27,10 +33,15 @@ export const RegistrationForm = () => {
     function handleSubmit(event: FormEvent) {
         event.preventDefault();
 
-        console.log(form)
-        UserService.registerUser(form).then((data) => {
-            navigate("/login");
-        });
+        console.log(form);
+        UserService.registerUser(form)
+            .then((data) => {
+                navigate("/login");
+            })
+            .catch(({ response }) => {
+                toggleToast(true);
+                setToastMessage(response.data.message);
+            });
     }
 
     return (
