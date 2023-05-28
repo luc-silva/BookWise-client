@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import { Button } from "../components/Buttons/Button";
 import { BookDetailsTitleDisplay } from "../components/Display/BookDetailsTitleDisplay";
 import { useNavigate, useParams } from "react-router-dom";
-import { bookDataInitialValues } from "../constants/defaultValues";
+import {
+    bookDataInitialValues,
+    componentStatusInitialValues,
+} from "../constants/defaultValues";
 import { ExternalLinkButton } from "../components/Buttons/ExternalLinkButton";
 import BookService from "../Services/BookService";
 import styles from "./BookDetails.module.css";
@@ -10,10 +13,13 @@ import { BookMiscInfoDisplay } from "../components/Display/BookMiscInfoDisplay";
 import { BookAboutDisplay } from "../components/Display/BookAboutDisplay";
 import { ImageContainer } from "../components/Containers/ImageContainer";
 import { createImageBlob } from "../utils/tools";
+import { LoadingOverlay } from "../components/Loading/LoadingOverlay";
 
 export const BookDetails = ({ user }: { user: UserSession }) => {
     let [bookDetails, setBookDetails] = useState(bookDataInitialValues);
-    let [imagePath, setImagePath] = useState("")
+    let [pageStatus, togglePageStatus] = useState(componentStatusInitialValues);
+    let [imagePath, setImagePath] = useState("");
+
     let { id } = useParams();
     const navigate = useNavigate();
 
@@ -32,18 +38,22 @@ export const BookDetails = ({ user }: { user: UserSession }) => {
     });
     useEffect(() => {
         if (id) {
-            BookService.getBookDetails(id, user.token)
-                .then((data:FetchedBookDetails) => {
-                    setBookDetails(data)
+            BookService.getBookDetails(id, user.token).then(
+                (data: FetchedBookDetails) => {
+                    setBookDetails(data);
                     setImagePath(createImageBlob(data.image.buffer.data));
-                });
+                    togglePageStatus({ ...pageStatus, isLoading: false });
+                }
+            );
         }
     }, [id, user]);
     return (
         <main className={styles["book-details"]}>
             <aside className={styles["book__aside-info"]}>
                 <div className={styles["book__image__container"]}>
-                    <ImageContainer imageObject={imagePath} />
+                    {(pageStatus.isLoading && <LoadingOverlay />) || (
+                        <ImageContainer imageObject={imagePath} />
+                    )}
                 </div>
                 <div className={styles["book__external-links"]}>
                     <ExternalLinkButton
@@ -66,9 +76,11 @@ export const BookDetails = ({ user }: { user: UserSession }) => {
 
             <section className={styles["book-details__main"]}>
                 <div className={styles["book-details__info"]}>
-                    <BookDetailsTitleDisplay
-                        bookDetails={bookDetails.bookDetails}
-                    />
+                    {(pageStatus.isLoading && <LoadingOverlay />) || (
+                        <BookDetailsTitleDisplay
+                            bookDetails={bookDetails.bookDetails}
+                        />
+                    )}
                 </div>
                 <div className={styles["book-details__about"]}>
                     <BookAboutDisplay bookDetails={bookDetails} />

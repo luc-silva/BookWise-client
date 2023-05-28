@@ -5,9 +5,9 @@ import { InputContainer } from "../Inputs/InputContainer";
 import { NumberInput } from "../Inputs/NumberInput";
 import { TextInput } from "../Inputs/TextInput";
 import { TextareaInput } from "../Inputs/TextareaInput";
-import styles from "./BookFormInputs.module.css";
 import { SelectInput } from "../Inputs/SelectInput";
 import { statusOptions } from "../../constants/defaultValues";
+import styles from "./BookFormInputs.module.css";
 
 export const BookFormInputs = ({
     bookData,
