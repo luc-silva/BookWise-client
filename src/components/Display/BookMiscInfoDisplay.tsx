@@ -10,14 +10,14 @@ export const BookMiscInfoDisplay = ({
         <>
             <div className={styles["date"]}>
                 <strong>Date Criated:</strong>
-                <p>{format(new Date(bookDetails.updatedAt), "dd/MM/yyyy")}</p>
+                <p>{format(new Date(bookDetails.bookDetails.updatedAt), "dd/MM/yyyy")}</p>
             </div>
             <div className={[styles["date"], styles["date-updated"]].join(" ")}>
                 <strong>Last Time Updated:</strong>
-                <p>{format(new Date(bookDetails.createdAt), "dd/MM/yyyy")}</p>
+                <p>{format(new Date(bookDetails.bookDetails.createdAt), "dd/MM/yyyy")}</p>
             </div>
             <div className={styles["id"]}>
-                <em>id:{bookDetails._id}</em>
+                <em>id:{bookDetails.bookDetails._id}</em>
             </div>
         </>
     );

@@ -9,11 +9,11 @@ export const BookAboutDisplay = ({
         <>
             <div className={styles["tags"]}>
                 <strong>Tags:</strong>
-                <div>{bookDetails.tags}</div>
+                <div>{bookDetails.bookDetails.tags}</div>
             </div>
             <div className={styles["description"]}>
                 <strong>Description:</strong>
-                <div>{bookDetails.description? bookDetails.description : "None provided."}</div>
+                <div>{bookDetails.bookDetails.description? bookDetails.bookDetails.description : "None provided."}</div>
             </div>
         </>
     );

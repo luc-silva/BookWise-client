@@ -78,6 +78,7 @@ export const BookFormInputs = ({
                     placeholder
                     placeholderText="III"
                     maxLenght={15}
+                    isRequired={false}
                     onChange={handleBookDataChange}
                 />
             </ExtendedInputContainer>{" "}
@@ -130,6 +131,7 @@ export const BookFormInputs = ({
                     maxLenght={15}
                     minLenght={1}
                     onChange={handleBookDataChange}
+                    isRequired={false}
                 />
             </InputContainer>
             <InputContainer className={styles["input-container"]}>
@@ -146,7 +148,7 @@ export const BookFormInputs = ({
             </InputContainer>
             <InputContainer className={styles["input-container"]}>
                 <TextareaInput
-                    actualState={bookData.description}
+                    actualState={bookData.store_url}
                     inputName="store_url"
                     maxLenght={250}
                     onChange={handleBookDataChange}

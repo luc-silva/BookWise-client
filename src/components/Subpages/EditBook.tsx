@@ -14,7 +14,7 @@ export const EditBook = ({ user }: { user: UserSession }) => {
         event.preventDefault();
 
         if (id) {
-            BookService.updateBook(id, user.token, bookData).then(() => {
+            BookService.updateBook(id, user.token, bookData.bookDetails).then(() => {
                 navigate(`/book/${id}`);
             });
         }
@@ -43,7 +43,7 @@ export const EditBook = ({ user }: { user: UserSession }) => {
                         onSubmit={handleSubmit}
                     >
                         <BookFormInputs
-                            bookData={bookData}
+                            bookData={bookData.bookDetails}
                             setBookData={setBookData}
                         />
                     </form>

@@ -4,8 +4,7 @@ import styles from "./ImageInputContainer.module.css";
 import { ChangeEvent, useState } from "react";
 import { ImageContainer } from "../Containers/ImageContainer";
 
-export const ImageInputContainer = () => {
-    let [imageBlob, setImageBlob] = useState(null as null | File);
+export const ImageInputContainer = ({setImageBlob}: {imageBlob: null | File,setImageBlob:Function}) => {
     let [imageObject, setImageObject] = useState("");
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {

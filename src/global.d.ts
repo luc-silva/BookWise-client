@@ -20,11 +20,20 @@ interface BookDetails {
     store_url: string;
     released_date: Date;
 }
-interface FetchedBookDetails extends BookDetails {
-    _id: string;
-    user: string;
-    createdAt: Date;
-    updatedAt: Date
+interface BookImageData{
+    _id:string
+    buffer:{
+        data: number[]
+    }
+}
+interface FetchedBookDetails {
+    bookDetails: BookDetails & {
+        _id: string;
+        user: string;
+        createdAt: Date;
+        updatedAt: Date;
+    };
+    image: BookImageData;
 }
 interface UserSession {
     token: string;

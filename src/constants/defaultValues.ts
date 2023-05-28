@@ -11,13 +11,25 @@ export const createBookFormDefaultValues: BookDetails = {
     store_url: "",
     volume: "",
 };
-export const bookDetailsDefaultValue: FetchedBookDetails = {
-    ...createBookFormDefaultValues,
-    user: "",
+export const imageDataDefaultValues:BookImageData = {
     _id: "",
-    createdAt: new Date(),
-    updatedAt: new Date()
+    buffer: {
+        data: [1,2]
+    }
+}
+export const bookDetailsDefaultValue: FetchedBookDetails = {
+    bookDetails: {
+        ...createBookFormDefaultValues,
+        user: "",
+        _id: "",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    },
+    image: {...imageDataDefaultValues},
 };
+
+
+
 
 export const userSessionDefaultValues = {
     username: "",
@@ -35,11 +47,14 @@ export const registrationDefaultValue = {
 };
 
 export const bookCardDefaultValues: FetchedBookDetails = {
-    ...createBookFormDefaultValues,
-    user: "",
-    _id: "",
-    createdAt: new Date(),
-    updatedAt: new Date()
+    bookDetails: {
+        ...createBookFormDefaultValues,
+        user: "",
+        _id: "",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    },
+    image: {...imageDataDefaultValues},
 };
 
 export const statusPanelDefaultValues = {

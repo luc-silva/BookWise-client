@@ -8,12 +8,15 @@ import BookService from "../Services/BookService";
 import styles from "./BookDetails.module.css";
 import { BookMiscInfoDisplay } from "../components/Display/BookMiscInfoDisplay";
 import { BookAboutDisplay } from "../components/Display/BookAboutDisplay";
+import { ImageContainer } from "../components/Containers/ImageContainer";
+import { createImageBlob } from "../utils/tools";
 
 export const BookDetails = ({ user }: { user: UserSession }) => {
     let [bookDetails, setBookDetails] = useState(bookDetailsDefaultValue);
+    let [imagePath, setImagePath] = useState("")
     let { id } = useParams();
     const navigate = useNavigate();
-    
+
     function deleteBook() {
         if (id) {
             BookService.deleteBook(id, user.token).then(() => {
@@ -21,22 +24,26 @@ export const BookDetails = ({ user }: { user: UserSession }) => {
             });
         }
     }
-    
+
     useEffect(() => {
-        if(!user.isLogged){
-            navigate("/login")
+        if (!user.isLogged) {
+            navigate("/login");
         }
-    })
+    });
     useEffect(() => {
         if (id) {
-            BookService.getBookDetails(id, user.token).then(setBookDetails);
+            BookService.getBookDetails(id, user.token)
+                .then((data:FetchedBookDetails) => {
+                    setBookDetails(data)
+                    setImagePath(createImageBlob(data.image.buffer.data));
+                });
         }
     }, [id, user]);
     return (
         <main className={styles["book-details"]}>
             <aside className={styles["book__aside-info"]}>
                 <div className={styles["book__image__container"]}>
-                    {/* <img src="" alt="" /> */}
+                    <ImageContainer imageObject={imagePath} />
                 </div>
                 <div className={styles["book__external-links"]}>
                     <ExternalLinkButton
@@ -45,10 +52,10 @@ export const BookDetails = ({ user }: { user: UserSession }) => {
                         href={`/book/${id}/edit`}
                         targetSelf
                     />
-                    {bookDetails.store_url && (
+                    {bookDetails.bookDetails.store_url && (
                         <ExternalLinkButton
                             buttonText="Buy book"
-                            href={bookDetails.store_url}
+                            href={bookDetails.bookDetails.store_url}
                         />
                     )}
                 </div>
@@ -59,7 +66,9 @@ export const BookDetails = ({ user }: { user: UserSession }) => {
 
             <section className={styles["book-details__main"]}>
                 <div className={styles["book-details__info"]}>
-                    <BookDetailsTitleDisplay bookDetails={bookDetails} />
+                    <BookDetailsTitleDisplay
+                        bookDetails={bookDetails.bookDetails}
+                    />
                 </div>
                 <div className={styles["book-details__about"]}>
                     <BookAboutDisplay bookDetails={bookDetails} />
