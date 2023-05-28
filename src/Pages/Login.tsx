@@ -3,7 +3,7 @@ import { InputContainer } from "../components/Inputs/InputContainer";
 import { PasswordInput } from "../components/Inputs/PasswordInput";
 import { TextInput } from "../components/Inputs/TextInput";
 import { useNavigate } from "react-router-dom";
-import { loginFormDefaultValues } from "../constants/defaultValues";
+import { loginFormInitialValues } from "../constants/defaultValues";
 import UserService from "../Services/UserService";
 import styles from "./Login.module.css";
 
@@ -14,7 +14,7 @@ export const Login = ({
     user: UserSession;
     setUser: Function;
 }) => {
-    let [form, setForm] = useState(loginFormDefaultValues);
+    let [form, setForm] = useState(loginFormInitialValues);
     const navigate = useNavigate();
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {

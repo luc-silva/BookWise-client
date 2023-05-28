@@ -10,7 +10,7 @@ import { ImageContainer } from "../Containers/ImageContainer";
 import { BookCardInfoDisplay } from "../Display/BookCardInfoDisplay";
 
 //misc
-import { bookCardDefaultValues } from "../../constants/defaultValues";
+import { bookDataInitialValues } from "../../constants/defaultValues";
 import styles from "./BookCard.module.css";
 
 export const BookCard = ({
@@ -20,7 +20,7 @@ export const BookCard = ({
     bookId: string;
     userToken: string;
 }) => {
-    let [bookData, setBookData] = useState(bookCardDefaultValues);
+    let [bookData, setBookData] = useState(bookDataInitialValues);
     let [image, setImage] = useState("");
 
     useEffect(() => {

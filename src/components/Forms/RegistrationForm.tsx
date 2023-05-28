@@ -4,12 +4,12 @@ import { InputContainer } from "../Inputs/InputContainer";
 import { PasswordInput } from "../Inputs/PasswordInput";
 import { TextInput } from "../Inputs/TextInput";
 import { useNavigate } from "react-router-dom";
-import { registrationDefaultValue } from "../../constants/defaultValues";
+import { registrationFormInitialValue } from "../../constants/defaultValues";
 import UserService from "../../Services/UserService";
 import styles from "./RegistrationForm.module.css";
 
 export const RegistrationForm = () => {
-    let [form, setForm] = useState(registrationDefaultValue);
+    let [form, setForm] = useState(registrationFormInitialValue);
     const navigate = useNavigate();
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {

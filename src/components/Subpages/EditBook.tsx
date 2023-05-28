@@ -1,12 +1,12 @@
 import { FormEvent, useEffect, useState } from "react";
 import { BookFormInputs } from "../Forms/BookFormInputs";
 import { useNavigate, useParams } from "react-router-dom";
-import { bookDetailsDefaultValue } from "../../constants/defaultValues";
+import { bookDataInitialValues } from "../../constants/defaultValues";
 import BookService from "../../Services/BookService";
 import styles from "./EditBook.module.css";
 
 export const EditBook = ({ user }: { user: UserSession }) => {
-    let [bookData, setBookData] = useState(bookDetailsDefaultValue);
+    let [bookData, setBookData] = useState(bookDataInitialValues);
     let { id } = useParams();
     const navigate = useNavigate();
 

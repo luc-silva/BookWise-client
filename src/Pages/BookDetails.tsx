@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "../components/Buttons/Button";
 import { BookDetailsTitleDisplay } from "../components/Display/BookDetailsTitleDisplay";
 import { useNavigate, useParams } from "react-router-dom";
-import { bookDetailsDefaultValue } from "../constants/defaultValues";
+import { bookDataInitialValues } from "../constants/defaultValues";
 import { ExternalLinkButton } from "../components/Buttons/ExternalLinkButton";
 import BookService from "../Services/BookService";
 import styles from "./BookDetails.module.css";
@@ -12,7 +12,7 @@ import { ImageContainer } from "../components/Containers/ImageContainer";
 import { createImageBlob } from "../utils/tools";
 
 export const BookDetails = ({ user }: { user: UserSession }) => {
-    let [bookDetails, setBookDetails] = useState(bookDetailsDefaultValue);
+    let [bookDetails, setBookDetails] = useState(bookDataInitialValues);
     let [imagePath, setImagePath] = useState("")
     let { id } = useParams();
     const navigate = useNavigate();

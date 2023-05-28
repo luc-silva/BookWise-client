@@ -1,13 +1,13 @@
 import { FormEvent, useState } from "react";
 import { ImageInputContainer } from "../Inputs/ImageInputContainer";
 import { BookFormInputs } from "./BookFormInputs";
-import { createBookFormDefaultValues } from "../../constants/defaultValues";
+import { bookDetailsInitialValues } from "../../constants/defaultValues";
 
 import BookService from "../../Services/BookService";
 import styles from "./CreateBookForm.module.css";
 
 export const CreateBookForm = ({ user }: { user: UserSession }) => {
-    let [bookDetails, setBookDetails] = useState(createBookFormDefaultValues);
+    let [bookDetails, setBookDetails] = useState(bookDetailsInitialValues);
     let [imageBlob, setImageBlob] = useState(null as null | File);
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {

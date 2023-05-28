@@ -1,4 +1,8 @@
-export const createBookFormDefaultValues: BookDetails = {
+//Initial values for react components
+/**
+ * Book basic details for inputs
+ */
+export const bookDetailsInitialValues: BookDetails = {
     status: "",
     edition: "",
     franchise: "",
@@ -11,59 +15,77 @@ export const createBookFormDefaultValues: BookDetails = {
     store_url: "",
     volume: "",
 };
-export const imageDataDefaultValues:BookImageData = {
+
+/**
+ * Book basic details, including database fields
+ */
+export const fetchedBookDetailsInitialValue = {
+    ...bookDetailsInitialValues,
+    user: "",
     _id: "",
-    buffer: {
-        data: [1,2]
-    }
-}
-export const bookDetailsDefaultValue: FetchedBookDetails = {
-    bookDetails: {
-        ...createBookFormDefaultValues,
-        user: "",
-        _id: "",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    },
-    image: {...imageDataDefaultValues},
+    createdAt: new Date(),
+    updatedAt: new Date(),
 };
 
+/**
+ * Image fields
+ */
+export const imageDataInitialValues: BookImageData = {
+    _id: "",
+    buffer: {
+        data: [1, 2],
+    },
+};
 
+/**
+ * Book object, including its image.
+ */
+export const bookDataInitialValues: FetchedBookDetails = {
+    bookDetails: {
+        ...fetchedBookDetailsInitialValue,
+    },
+    image: { ...imageDataInitialValues },
+};
 
-
-export const userSessionDefaultValues = {
+/**
+ * Session object initial state
+ */
+export const userSessionInitialValues = {
     username: "",
     token: "",
     id: "",
     isLogged: false,
 };
-export const loginFormDefaultValues = { email: "", password: "" };
 
-export const registrationDefaultValue = {
+/**
+ * Login form inputs initial values
+ */
+export const loginFormInitialValues = { email: "", password: "" };
+
+/**
+ * Registration form inputs initial values
+ */
+export const registrationFormInitialValue = {
     name: { first: "", last: "" },
     username: "",
     email: "",
     password: "",
 };
 
-export const bookCardDefaultValues: FetchedBookDetails = {
-    bookDetails: {
-        ...createBookFormDefaultValues,
-        user: "",
-        _id: "",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    },
-    image: {...imageDataDefaultValues},
-};
-
-export const statusPanelDefaultValues = {
+/**
+ * Status initial state
+ */
+export const statusPanelInitialValues = {
     read: 0,
     not_read: 0,
     dropped: 0,
     total_read: 0,
 };
 
+//Misc
+/**
+ * Options available for book status field
+ */
 export const statusOptions = [
     { value: "Not Read", text: "Not Read" },
     { value: "Read", text: "Read" },

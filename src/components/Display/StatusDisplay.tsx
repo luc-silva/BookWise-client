@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { statusPanelDefaultValues } from "../../constants/defaultValues";
+import { statusPanelInitialValues } from "../../constants/defaultValues";
 import UserService from "../../Services/UserService";
 import styles from "./StatusDisplay.module.css";
 
 export const StatusDisplay = ({ user }: { user: UserSession }) => {
-    let [data, setData] = useState(statusPanelDefaultValues);
+    let [data, setData] = useState(statusPanelInitialValues);
 
     useEffect(() => {
         if (user.id) {

@@ -3,13 +3,13 @@ import { AppLogo } from "./AppLogo";
 import styles from "./Header.module.css";
 import { HeaderNavigation } from "./HeaderNavigation";
 import { useNavigate } from "react-router-dom";
-import { userSessionDefaultValues } from "../../constants/defaultValues";
+import { userSessionInitialValues } from "../../constants/defaultValues";
 
 export const Header = ({ user,setUser }: { user: UserSession, setUser:Function }) => {
     let navigate = useNavigate()
 
     function logOut(){
-        setUser(userSessionDefaultValues)
+        setUser(userSessionInitialValues)
         navigate("/login")
     }
     return (

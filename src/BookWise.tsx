@@ -4,14 +4,14 @@ import { Header } from "./components/Misc/Header";
 import { BookDetails } from "./Pages/BookDetails";
 import { CreateBook } from "./Pages/CreateBook";
 import { useState } from "react";
-import { userSessionDefaultValues } from "./constants/defaultValues";
+import { userSessionInitialValues } from "./constants/defaultValues";
 import { Login } from "./Pages/Login";
 import { Registration } from "./Pages/Registration";
 import styles from "./BookWise.module.css";
 import { EditBook } from "./components/Subpages/EditBook";
 
 function App() {
-    let [user, setUser] = useState(userSessionDefaultValues);
+    let [user, setUser] = useState(userSessionInitialValues);
 
     return (
         <div className={styles["BookWise"]}>
