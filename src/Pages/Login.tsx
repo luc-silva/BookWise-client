@@ -33,7 +33,7 @@ export const Login = ({
         await UserService.loginUser(form)
             .then((data: { id: string; token: string }) => {
                 setUser({ ...user, ...data, isLogged: true });
-                navigate("/bookshelf");
+                navigate("/");
             })
             .catch(({ response }) => {
                 toggleToast(true);
@@ -77,7 +77,7 @@ export const Login = ({
                         />
                     </InputContainer>
                     <div>
-                        <input type="submit" className={styles["submit-btn"]} />
+                        <input type="submit" className={styles["submit-btn"]} value="Login"/>
                     </div>
                 </form>
                 <div>

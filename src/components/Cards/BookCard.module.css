@@ -4,6 +4,7 @@
     background-color: whitesmoke;
     position: relative;
     z-index: 1;
+    flex: 1 0 auto;
 }
 .book__image{
     width: 100%;

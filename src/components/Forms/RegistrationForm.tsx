@@ -114,7 +114,7 @@ export const RegistrationForm = ({
                 />
             </InputContainer>
             <div>
-                <input type="submit" className={styles["submit-btn"]} />
+                <input type="submit" className={styles["submit-btn"]} value="Create Account" />
             </div>
         </form>
     );
